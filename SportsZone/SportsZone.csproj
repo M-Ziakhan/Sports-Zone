@@ -1,0 +1,1227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C43D1890-9ACC-4A8B-AC84-46C76EB6A965}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SportsZone</RootNamespace>
+    <AssemblyName>SportsZone</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="clubs.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coachs.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coach_associations.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="coach_associations_request.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\CoachActivitiesController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\GlobalController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembershipController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
+    <Compile Include="Controllers\PlayerActivitiesController.cs" />
+    <Compile Include="feedback.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="games.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="games_positions.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Authority\Authorized.cs" />
+    <Compile Include="Helpers\Authority\OnlyForAdmin.cs" />
+    <Compile Include="Helpers\Authority\OnlyForClub.cs" />
+    <Compile Include="Helpers\Authority\OnlyForCoach.cs" />
+    <Compile Include="Helpers\Authority\OnlyForPlayer.cs" />
+    <Compile Include="Helpers\IsExist.cs" />
+    <Compile Include="matches.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="match_result.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ClubsSearch.cs" />
+    <Compile Include="Models\CustomPlayers.cs" />
+    <Compile Include="Models\GamePositionsHolder.cs" />
+    <Compile Include="players.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="player_associations.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="player_associations_request.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="player_role.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Authenticate.cs" />
+    <Compile Include="Security\BCrypt.cs" />
+    <Compile Include="Security\BcryptAuthenticationException.cs" />
+    <Compile Include="Security\HashInformation.cs" />
+    <Compile Include="Security\HashInformationException.cs" />
+    <Compile Include="Security\HashType.cs" />
+    <Compile Include="Security\SaltParseException.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SZModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SZModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SZModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SZModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="teams.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users.cs">
+      <DependentUpon>SZModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SZModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SZModel.edmx</DependentUpon>
+      <LastGenOutput>SZModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SZModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SZModel.edmx</DependentUpon>
+      <LastGenOutput>SZModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="themes\default\browserconfig.xml" />
+    <Content Include="themes\default\css\animate.css" />
+    <Content Include="themes\default\css\bootstrap\bootstrap.min.css" />
+    <Content Include="themes\default\css\color.css" />
+    <Content Include="themes\default\css\font-awesome.min.css" />
+    <Content Include="themes\default\css\icomoon.css" />
+    <Content Include="themes\default\css\main.css" />
+    <Content Include="themes\default\css\normalize.css" />
+    <Content Include="themes\default\css\responsive.css" />
+    <Content Include="themes\default\css\transition.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="themes\default\favicon.ico" />
+    <Content Include="themes\default\fonts\fontawesome-webfont.svg" />
+    <Content Include="themes\default\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="themes\default\fonts\icomoon.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="themes\default\images\about-video-1.jpg" />
+    <Content Include="themes\default\images\about-video-2.jpg" />
+    <Content Include="themes\default\images\about-video-bg.jpg" />
+    <Content Include="themes\default\images\about-video.jpg" />
+    <Content Include="themes\default\images\add-banner-2.jpg" />
+    <Content Include="themes\default\images\add-banner.jpg" />
+    <Content Include="themes\default\images\add-banners\img-01.jpg" />
+    <Content Include="themes\default\images\add-banners\img-02.jpg" />
+    <Content Include="themes\default\images\add-banners\img-03.jpg" />
+    <Content Include="themes\default\images\add-shirt.jpg" />
+    <Content Include="themes\default\images\adds-02.jpg" />
+    <Content Include="themes\default\images\adds-3.jpg" />
+    <Content Include="themes\default\images\adds.jpg" />
+    <Content Include="themes\default\images\arrow-left.png" />
+    <Content Include="themes\default\images\arrow-right.png" />
+    <Content Include="themes\default\images\aside-post.jpg" />
+    <Content Include="themes\default\images\aurthor-img.jpg" />
+    <Content Include="themes\default\images\banner-bgs\img-01.jpg" />
+    <Content Include="themes\default\images\banner-bgs\img-02.jpg" />
+    <Content Include="themes\default\images\banner-bgs\img-03.jpg" />
+    <Content Include="themes\default\images\banner-slider-2\banner-layer-1.png" />
+    <Content Include="themes\default\images\banner-slider-2\img-01.jpg" />
+    <Content Include="themes\default\images\banner-slider\img-01.jpg" />
+    <Content Include="themes\default\images\banner-slider\img-02.jpg" />
+    <Content Include="themes\default\images\banner-slider\img-03.jpg" />
+    <Content Include="themes\default\images\best-sellers\img-01.jpg" />
+    <Content Include="themes\default\images\best-sellers\img-02.jpg" />
+    <Content Include="themes\default\images\best-sellers\img-03.jpg" />
+    <Content Include="themes\default\images\blog-detail\aurthor.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-01.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-02.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-03.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-2-1.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-2-2.jpg" />
+    <Content Include="themes\default\images\blog-detail\img-2-3.jpg" />
+    <Content Include="themes\default\images\blog-detail\next-img.jpg" />
+    <Content Include="themes\default\images\blog-detail\prev-img.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-01.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-02.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-03.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-2-1.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-2-2.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-2-3.jpg" />
+    <Content Include="themes\default\images\blog-grid-view\img-2-4.jpg" />
+    <Content Include="themes\default\images\blog-list-view\img-01.jpg" />
+    <Content Include="themes\default\images\blog-list-view\img-02.jpg" />
+    <Content Include="themes\default\images\blog-list-view\img-03.jpg" />
+    <Content Include="themes\default\images\blog\img-01.jpg" />
+    <Content Include="themes\default\images\blog\img-02.jpg" />
+    <Content Include="themes\default\images\brand-icon-bg.jpg" />
+    <Content Include="themes\default\images\brand-icons\img-01.png" />
+    <Content Include="themes\default\images\brand-icons\img-02.png" />
+    <Content Include="themes\default\images\brand-icons\img-03.jpg" />
+    <Content Include="themes\default\images\brand-icons\img-03.png" />
+    <Content Include="themes\default\images\brand-icons\img-04.png" />
+    <Content Include="themes\default\images\brand-icons\img-05.png" />
+    <Content Include="themes\default\images\brand-icons\img-06.png" />
+    <Content Include="themes\default\images\brand-icons\img-07.png" />
+    <Content Include="themes\default\images\brand-icons\img-08.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-1.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-2.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-3.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-4.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-5.png" />
+    <Content Include="themes\default\images\brand-icons\img-1-6.png" />
+    <Content Include="themes\default\images\coach-statement-bg.jpg" />
+    <Content Include="themes\default\images\coach.jpg" />
+    <Content Include="themes\default\images\commenter\img-01.jpg" />
+    <Content Include="themes\default\images\commenter\img-02.jpg" />
+    <Content Include="themes\default\images\commenter\img-1-1.jpg" />
+    <Content Include="themes\default\images\commenter\img-2-1.jpg" />
+    <Content Include="themes\default\images\country-flags-bg.jpg" />
+    <Content Include="themes\default\images\flags\img-01.jpg" />
+    <Content Include="themes\default\images\flags\img-02.jpg" />
+    <Content Include="themes\default\images\flags\img-03.jpg" />
+    <Content Include="themes\default\images\flags\img-04.jpg" />
+    <Content Include="themes\default\images\footer-add.jpg" />
+    <Content Include="themes\default\images\footer-logo.png" />
+    <Content Include="themes\default\images\footer-shop\img-01.png" />
+    <Content Include="themes\default\images\gallery-v1\img-01.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-02.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-03.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-04.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-05.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-06.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-07.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-08.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-09.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-10.jpg" />
+    <Content Include="themes\default\images\gallery-v1\img-11.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-01.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-02.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-03.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-04.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-05.jpg" />
+    <Content Include="themes\default\images\gallery-v2\img-06.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-01.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-02.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-03.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-04.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-05.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-06.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-1.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-2.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-3.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-4.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-5.jpg" />
+    <Content Include="themes\default\images\gallery-v3\img-1-6.jpg" />
+    <Content Include="themes\default\images\gallery\img-01.jpg" />
+    <Content Include="themes\default\images\gallery\img-02.jpg" />
+    <Content Include="themes\default\images\gallery\img-03.jpg" />
+    <Content Include="themes\default\images\gallery\img-04.jpg" />
+    <Content Include="themes\default\images\gallery\img-05.jpg" />
+    <Content Include="themes\default\images\gallery\img-06.jpg" />
+    <Content Include="themes\default\images\gallery\img-07.jpg" />
+    <Content Include="themes\default\images\gallery\img-08.jpg" />
+    <Content Include="themes\default\images\heading-pettren.jpg" />
+    <Content Include="themes\default\images\heading-pettren.png" />
+    <Content Include="themes\default\images\inner-banner\img-01.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-02.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-03.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-04.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-05.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-06.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-07.jpg" />
+    <Content Include="themes\default\images\inner-banner\img-08.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-01.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-02.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-03.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-032.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-04.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-05.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-06.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-07.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-08.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\img-09.jpg" />
+    <Content Include="themes\default\images\instgram-imgs\instgram-writer.jpg" />
+    <Content Include="themes\default\images\keper-img.jpg" />
+    <Content Include="themes\default\images\latest-news\img-01.jpg" />
+    <Content Include="themes\default\images\latest-news\img-02.jpg" />
+    <Content Include="themes\default\images\latest-news\img-03.jpg" />
+    <Content Include="themes\default\images\latest-news\img-04.jpg" />
+    <Content Include="themes\default\images\logo-1.png" />
+    <Content Include="themes\default\images\logo-2.png" />
+    <Content Include="themes\default\images\logo-3.png" />
+    <Content Include="themes\default\images\logo-4.png" />
+    <Content Include="themes\default\images\match-detail\img-01.jpg" />
+    <Content Include="themes\default\images\match-detail\team-logo-01.png" />
+    <Content Include="themes\default\images\match-detail\team-logo-02.png" />
+    <Content Include="themes\default\images\match-detail\team-logo-03.png" />
+    <Content Include="themes\default\images\match-detail\team-logo-04.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-01.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-02.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-03.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-04.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-05.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-06.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-07.png" />
+    <Content Include="themes\default\images\match-fixtuer\img-08.png" />
+    <Content Include="themes\default\images\matches-logo\img-01.png" />
+    <Content Include="themes\default\images\matches-logo\img-02.png" />
+    <Content Include="themes\default\images\matches-logo\img-03.png" />
+    <Content Include="themes\default\images\matches-logo\img-04.png" />
+    <Content Include="themes\default\images\matches-logo\img-05.png" />
+    <Content Include="themes\default\images\matches-logo\img-06.png" />
+    <Content Include="themes\default\images\mobile.png" />
+    <Content Include="themes\default\images\news-post\img-01.jpg" />
+    <Content Include="themes\default\images\news-post\img-02.jpg" />
+    <Content Include="themes\default\images\our-logo.png" />
+    <Content Include="themes\default\images\parallax-bg\img-01.jpg" />
+    <Content Include="themes\default\images\parallax-bg\img-02.jpg" />
+    <Content Include="themes\default\images\parallax-bg\img-03.jpg" />
+    <Content Include="themes\default\images\pattern-bg.jpg" />
+    <Content Include="themes\default\images\player-img.png" />
+    <Content Include="themes\default\images\png-icons\img-01.png" />
+    <Content Include="themes\default\images\png-icons\img-02.png" />
+    <Content Include="themes\default\images\png-icons\img-03.png" />
+    <Content Include="themes\default\images\png-icons\img-04.png" />
+    <Content Include="themes\default\images\png-icons\img-05.png" />
+    <Content Include="themes\default\images\png-icons\img-06.png" />
+    <Content Include="themes\default\images\png-icons\img-07.png" />
+    <Content Include="themes\default\images\png-icons\img-08.png" />
+    <Content Include="themes\default\images\png-icons\img-09.png" />
+    <Content Include="themes\default\images\png-icons\img-10.png" />
+    <Content Include="themes\default\images\popular-news\img-01.jpg" />
+    <Content Include="themes\default\images\popular-news\img-02.jpg" />
+    <Content Include="themes\default\images\popular-news\img-03.jpg" />
+    <Content Include="themes\default\images\popular-news\img-04.jpg" />
+    <Content Include="themes\default\images\preloader.gif" />
+    <Content Include="themes\default\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="themes\default\images\prettyPhoto\default\loader.gif" />
+    <Content Include="themes\default\images\prettyPhoto\default\sprite.png" />
+    <Content Include="themes\default\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="themes\default\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="themes\default\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="themes\default\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="themes\default\images\product-slider\slider-img-01.jpg" />
+    <Content Include="themes\default\images\product-slider\slider-img-02.jpg" />
+    <Content Include="themes\default\images\product-slider\slider-img-03.jpg" />
+    <Content Include="themes\default\images\product-slider\slider-img-04.jpg" />
+    <Content Include="themes\default\images\product-slider\thumnail-01.jpg" />
+    <Content Include="themes\default\images\product-slider\thumnail-02.jpg" />
+    <Content Include="themes\default\images\product-slider\thumnail-03.jpg" />
+    <Content Include="themes\default\images\product-slider\thumnail-04.jpg" />
+    <Content Include="themes\default\images\products\img-01.jpg" />
+    <Content Include="themes\default\images\products\img-02.jpg" />
+    <Content Include="themes\default\images\products\img-03.jpg" />
+    <Content Include="themes\default\images\products\img-04.jpg" />
+    <Content Include="themes\default\images\products\img-05.jpg" />
+    <Content Include="themes\default\images\products\img-06.jpg" />
+    <Content Include="themes\default\images\products\img-2-1.jpg" />
+    <Content Include="themes\default\images\products\img-2-2.jpg" />
+    <Content Include="themes\default\images\products\img-2-3.jpg" />
+    <Content Include="themes\default\images\products\img-2-4.jpg" />
+    <Content Include="themes\default\images\products\img-2-5.jpg" />
+    <Content Include="themes\default\images\products\img-2-6.jpg" />
+    <Content Include="themes\default\images\products\img-2-7.jpg" />
+    <Content Include="themes\default\images\products\img-2-8.jpg" />
+    <Content Include="themes\default\images\products\img-2-9.jpg" />
+    <Content Include="themes\default\images\red-bg.jpg" />
+    <Content Include="themes\default\images\result-team-logo\img-01.png" />
+    <Content Include="themes\default\images\result-team-logo\img-02.png" />
+    <Content Include="themes\default\images\reviewers\img-01.jpg" />
+    <Content Include="themes\default\images\reviewers\img-02.jpg" />
+    <Content Include="themes\default\images\reviewers\img-03.jpg" />
+    <Content Include="themes\default\images\shop-detail\add-cart-01.jpg" />
+    <Content Include="themes\default\images\shop-detail\add-cart-02.jpg" />
+    <Content Include="themes\default\images\shop-detail\add-cart-03.jpg" />
+    <Content Include="themes\default\images\signature.png" />
+    <Content Include="themes\default\images\small-flags\img-01.png" />
+    <Content Include="themes\default\images\small-flags\img-02.png" />
+    <Content Include="themes\default\images\small-flags\img-03.png" />
+    <Content Include="themes\default\images\small-flags\img-04.png" />
+    <Content Include="themes\default\images\small-flags\img-05.png" />
+    <Content Include="themes\default\images\team-detail\bloq-aurthor.jpg" />
+    <Content Include="themes\default\images\team-logos-small\img-01.png" />
+    <Content Include="themes\default\images\team-logos-small\img-02.png" />
+    <Content Include="themes\default\images\team-logos-small\img-03.png" />
+    <Content Include="themes\default\images\team-logos-small\img-04.png" />
+    <Content Include="themes\default\images\team-logos-small\img-05.png" />
+    <Content Include="themes\default\images\team-logos-small\img-06.png" />
+    <Content Include="themes\default\images\team-logos-small\img-07.png" />
+    <Content Include="themes\default\images\team-logos-small\img-08.png" />
+    <Content Include="themes\default\images\team-logos\img-01.png" />
+    <Content Include="themes\default\images\team-logos\img-02.png" />
+    <Content Include="themes\default\images\team-logos\img-03.png" />
+    <Content Include="themes\default\images\team-logos\img-04.png" />
+    <Content Include="themes\default\images\team\img-01.jpg" />
+    <Content Include="themes\default\images\team\img-02.jpg" />
+    <Content Include="themes\default\images\team\img-03.jpg" />
+    <Content Include="themes\default\images\team\img-04.jpg" />
+    <Content Include="themes\default\images\team\img-1-1.jpg" />
+    <Content Include="themes\default\images\team\img-1-2.jpg" />
+    <Content Include="themes\default\images\team\img-1-3.jpg" />
+    <Content Include="themes\default\images\team\img-1-4.jpg" />
+    <Content Include="themes\default\images\testimonial\img-01.jpg" />
+    <Content Include="themes\default\images\testimonial\img-02.jpg" />
+    <Content Include="themes\default\images\testimonial\img-03.jpg" />
+    <Content Include="themes\default\images\top-story-bg.jpg" />
+    <Content Include="themes\default\images\tower-img.jpg" />
+    <Content Include="themes\default\images\underconstraction-bg.jpg" />
+    <Content Include="themes\default\images\video-bg-2.jpg" />
+    <Content Include="themes\default\images\video-bg-3.jpg" />
+    <Content Include="themes\default\images\video-bg-big.jpg" />
+    <Content Include="themes\default\images\video-bg.jpg" />
+    <Content Include="themes\default\images\video-gallery\img-01.jpg" />
+    <Content Include="themes\default\images\video-gallery\img-02.jpg" />
+    <Content Include="themes\default\images\video-gallery\img-03.jpg" />
+    <Content Include="themes\default\images\video-gallery\img-04.jpg" />
+    <Content Include="themes\default\images\video-gallery\img-05.jpg" />
+    <Content Include="themes\default\images\video-slider\img-01.jpg" />
+    <Content Include="themes\default\images\video-slider\img-02.jpg" />
+    <Content Include="themes\default\images\video-slider\img-03.jpg" />
+    <Content Include="themes\default\images\video-slider\img-04.jpg" />
+    <Content Include="themes\default\images\video-slider\img-05.jpg" />
+    <Content Include="themes\default\js\appear.js" />
+    <Content Include="themes\default\js\bigslide.js" />
+    <Content Include="themes\default\js\classie.js" />
+    <Content Include="themes\default\js\contact-form.js" />
+    <Content Include="themes\default\js\countdown.js" />
+    <Content Include="themes\default\js\countTo.js" />
+    <Content Include="themes\default\js\datepicker.js" />
+    <Content Include="themes\default\js\gmap3.min.js" />
+    <Content Include="themes\default\js\main.js" />
+    <Content Include="themes\default\js\parallax.js" />
+    <Content Include="themes\default\js\prettyPhoto.js" />
+    <Content Include="themes\default\js\range-slider.js" />
+    <Content Include="themes\default\js\rating-star.js" />
+    <Content Include="themes\default\js\slick.js" />
+    <Content Include="themes\default\js\spinner.js" />
+    <Content Include="themes\default\js\vendor\bootstrap.min.js" />
+    <Content Include="themes\default\js\vendor\jquery.js" />
+    <Content Include="themes\default\js\vendor\modernizr.js" />
+    <Content Include="themes\default\js\vendor\npm.js" />
+    <Content Include="themes\default\js\waterwheelCarousel.js" />
+    <Content Include="themes\default\js\wow-min.js" />
+    <Content Include="themes\default\login\down-arrow.png" />
+    <Content Include="themes\default\login\script.js" />
+    <Content Include="themes\default\login\style.css" />
+    <Content Include="themes\default\php\process.php" />
+    <Content Include="themes\default\style.css" />
+    <Content Include="themes\default\tile-wide.png" />
+    <Content Include="themes\default\tile.png" />
+    <Content Include="themes\ud\css\bootstrap.min.css" />
+    <Content Include="themes\ud\css\icons.css" />
+    <Content Include="themes\ud\css\metismenu.min.css" />
+    <Content Include="themes\ud\css\style.css" />
+    <Content Include="themes\ud\css\typicons.css" />
+    <Content Include="themes\ud\fonts\dripicons-v2.svg" />
+    <Content Include="themes\ud\fonts\fa-brands-400.svg" />
+    <Content Include="themes\ud\fonts\fa-regular-400.svg" />
+    <Content Include="themes\ud\fonts\fa-solid-900.svg" />
+    <Content Include="themes\ud\fonts\ionicons.svg" />
+    <Content Include="themes\ud\fonts\materialdesignicons-webfont.svg" />
+    <Content Include="themes\ud\fonts\outlined-iconset.svg" />
+    <Content Include="themes\ud\fonts\themify.svg" />
+    <Content Include="themes\ud\fonts\typicons.svg" />
+    <Content Include="themes\ud\images\bg-1.png" />
+    <Content Include="themes\ud\images\bg-2.png" />
+    <Content Include="themes\ud\images\coming-soon-img.png" />
+    <Content Include="themes\ud\images\error.png" />
+    <Content Include="themes\ud\images\favicon.ico" />
+    <Content Include="themes\ud\images\flags\french_flag.jpg" />
+    <Content Include="themes\ud\images\flags\germany_flag.jpg" />
+    <Content Include="themes\ud\images\flags\italy_flag.jpg" />
+    <Content Include="themes\ud\images\flags\russia_flag.jpg" />
+    <Content Include="themes\ud\images\flags\spain_flag.jpg" />
+    <Content Include="themes\ud\images\flags\us_flag.jpg" />
+    <Content Include="themes\ud\images\logo-dark.png" />
+    <Content Include="themes\ud\images\logo-light.png" />
+    <Content Include="themes\ud\images\logo-sm.png" />
+    <Content Include="themes\ud\images\maintenance-img.png" />
+    <Content Include="themes\ud\images\small\img-1.jpg" />
+    <Content Include="themes\ud\images\small\img-2.jpg" />
+    <Content Include="themes\ud\images\small\img-3.jpg" />
+    <Content Include="themes\ud\images\small\img-4.jpg" />
+    <Content Include="themes\ud\images\small\img-5.jpg" />
+    <Content Include="themes\ud\images\small\img-6.jpg" />
+    <Content Include="themes\ud\images\small\img-7.jpg" />
+    <Content Include="themes\ud\images\users\user-1.jpg" />
+    <Content Include="themes\ud\images\users\user-10.jpg" />
+    <Content Include="themes\ud\images\users\user-2.jpg" />
+    <Content Include="themes\ud\images\users\user-3.jpg" />
+    <Content Include="themes\ud\images\users\user-4.jpg" />
+    <Content Include="themes\ud\images\users\user-5.jpg" />
+    <Content Include="themes\ud\images\users\user-6.jpg" />
+    <Content Include="themes\ud\images\users\user-7.jpg" />
+    <Content Include="themes\ud\images\users\user-8.jpg" />
+    <Content Include="themes\ud\images\users\user-9.jpg" />
+    <Content Include="themes\ud\js\app.js" />
+    <Content Include="themes\ud\js\bootstrap.bundle.min.js" />
+    <Content Include="themes\ud\js\jquery.min.js" />
+    <Content Include="themes\ud\js\jquery.slimscroll.js" />
+    <Content Include="themes\ud\js\metismenu.min.js" />
+    <Content Include="themes\ud\js\waves.min.js" />
+    <Content Include="themes\ud\pages\alertify-init.js" />
+    <Content Include="themes\ud\pages\apexchart.init.js" />
+    <Content Include="themes\ud\pages\c3-chart-init.js" />
+    <Content Include="themes\ud\pages\calendar-init.js" />
+    <Content Include="themes\ud\pages\chartist.init.js" />
+    <Content Include="themes\ud\pages\chartjs.init.js" />
+    <Content Include="themes\ud\pages\countdown.int.js" />
+    <Content Include="themes\ud\pages\dashboard.init.js" />
+    <Content Include="themes\ud\pages\datatables.init.js" />
+    <Content Include="themes\ud\pages\echart.int.js" />
+    <Content Include="themes\ud\pages\flot.init.js" />
+    <Content Include="themes\ud\pages\form-advanced.init.js" />
+    <Content Include="themes\ud\pages\form-editors.int.js" />
+    <Content Include="themes\ud\pages\form-validation.init.js" />
+    <Content Include="themes\ud\pages\form-wizard.init.js" />
+    <Content Include="themes\ud\pages\gmaps.js" />
+    <Content Include="themes\ud\pages\jvectormap.init.js" />
+    <Content Include="themes\ud\pages\lightbox.js" />
+    <Content Include="themes\ud\pages\morris.init.js" />
+    <Content Include="themes\ud\pages\nestable-init.js" />
+    <Content Include="themes\ud\pages\peity.init.js" />
+    <Content Include="themes\ud\pages\rangeslider-init.js" />
+    <Content Include="themes\ud\pages\rangeslider.init.js" />
+    <Content Include="themes\ud\pages\rating-init.js" />
+    <Content Include="themes\ud\pages\sparklines.init.js" />
+    <Content Include="themes\ud\pages\sweet-alert.init.js" />
+    <Content Include="themes\ud\pages\table-editable.int.js" />
+    <Content Include="themes\ud\pages\table-responsive.init.js" />
+    <Content Include="themes\ud\pages\xeditable.js" />
+    <Content Include="themes\ud\plugins\alertify\css\alertify.css" />
+    <Content Include="themes\ud\plugins\alertify\js\alertify.js" />
+    <Content Include="themes\ud\plugins\alertify\js\ngAlertify.js" />
+    <Content Include="themes\ud\plugins\apexchart\apexcharts.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-datepicker\css\bootstrap-datepicker.min.css" />
+    <Content Include="themes\ud\plugins\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-maxlength\bootstrap-maxlength.js" />
+    <Content Include="themes\ud\plugins\bootstrap-maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-maxlength\src\bootstrap-maxlength.js" />
+    <Content Include="themes\ud\plugins\bootstrap-rating\bootstrap-rating.css" />
+    <Content Include="themes\ud\plugins\bootstrap-rating\bootstrap-rating.min.js" />
+    <Content Include="themes\ud\plugins\bootstrap-touchspin\css\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="themes\ud\plugins\bootstrap-touchspin\js\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="themes\ud\plugins\c3\c3.css" />
+    <Content Include="themes\ud\plugins\c3\c3.js" />
+    <Content Include="themes\ud\plugins\c3\c3.min.css" />
+    <Content Include="themes\ud\plugins\c3\c3.min.js" />
+    <Content Include="themes\ud\plugins\chartist\css\chartist.css" />
+    <Content Include="themes\ud\plugins\chartist\css\chartist.min.css" />
+    <Content Include="themes\ud\plugins\chartist\js\chartist-plugin-tooltip.min.js" />
+    <Content Include="themes\ud\plugins\chartist\js\chartist.min.js" />
+    <Content Include="themes\ud\plugins\chartjs\chart.min.js" />
+    <Content Include="themes\ud\plugins\countdown\jquery.countdown.min.js" />
+    <Content Include="themes\ud\plugins\d3\d3.js" />
+    <Content Include="themes\ud\plugins\d3\d3.min.js" />
+    <Content Include="themes\ud\plugins\datatables\buttons.bootstrap4.min.css" />
+    <Content Include="themes\ud\plugins\datatables\buttons.bootstrap4.min.js" />
+    <Content Include="themes\ud\plugins\datatables\buttons.colVis.min.js" />
+    <Content Include="themes\ud\plugins\datatables\buttons.html5.min.js" />
+    <Content Include="themes\ud\plugins\datatables\buttons.print.min.js" />
+    <Content Include="themes\ud\plugins\datatables\dataTables.bootstrap4.min.css" />
+    <Content Include="themes\ud\plugins\datatables\dataTables.bootstrap4.min.js" />
+    <Content Include="themes\ud\plugins\datatables\dataTables.buttons.min.js" />
+    <Content Include="themes\ud\plugins\datatables\dataTables.responsive.min.js" />
+    <Content Include="themes\ud\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="themes\ud\plugins\datatables\jszip.min.js" />
+    <Content Include="themes\ud\plugins\datatables\pdfmake.min.js" />
+    <Content Include="themes\ud\plugins\datatables\responsive.bootstrap4.min.css" />
+    <Content Include="themes\ud\plugins\datatables\responsive.bootstrap4.min.js" />
+    <Content Include="themes\ud\plugins\datatables\vfs_fonts.js" />
+    <Content Include="themes\ud\plugins\dropzone\dist\basic.css" />
+    <Content Include="themes\ud\plugins\dropzone\dist\dropzone-amd-module.js" />
+    <Content Include="themes\ud\plugins\dropzone\dist\dropzone.css" />
+    <Content Include="themes\ud\plugins\dropzone\dist\dropzone.js" />
+    <Content Include="themes\ud\plugins\dropzone\dist\min\basic.min.css" />
+    <Content Include="themes\ud\plugins\dropzone\dist\min\dropzone-amd-module.min.js" />
+    <Content Include="themes\ud\plugins\dropzone\dist\min\dropzone.min.css" />
+    <Content Include="themes\ud\plugins\dropzone\dist\min\dropzone.min.js" />
+    <Content Include="themes\ud\plugins\flot-chart\curvedLines.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.min.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.orderBars.min.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.pie.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.resize.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.selection.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.stack.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.time.js" />
+    <Content Include="themes\ud\plugins\flot-chart\jquery.flot.tooltip.min.js" />
+    <Content Include="themes\ud\plugins\fullcalendar\css\fullcalendar.min.css" />
+    <Content Include="themes\ud\plugins\fullcalendar\js\fullcalendar.min.js" />
+    <Content Include="themes\ud\plugins\gmaps\gmaps.js" />
+    <Content Include="themes\ud\plugins\gmaps\gmaps.min.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.controls.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.core.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.events.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.geofences.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.geometry.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.layers.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.map_types.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.markers.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.native_extensions.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.overlays.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.routes.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.static.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.streetview.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.styles.js" />
+    <Content Include="themes\ud\plugins\gmaps\lib\gmaps.utils.js" />
+    <Content Include="themes\ud\plugins\ion-rangeslider\css\ion.rangeSlider.css" />
+    <Content Include="themes\ud\plugins\ion-rangeslider\css\ion.rangeSlider.min.css" />
+    <Content Include="themes\ud\plugins\ion-rangeslider\js\ion.rangeSlider.js" />
+    <Content Include="themes\ud\plugins\ion-rangeslider\js\ion.rangeSlider.min.js" />
+    <Content Include="themes\ud\plugins\jquery-knob\excanvas.js" />
+    <Content Include="themes\ud\plugins\jquery-knob\jquery.knob.js" />
+    <Content Include="themes\ud\plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="themes\ud\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="themes\ud\plugins\jvectormap\gdp-data.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-2.0.2.css" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-2.0.2.min.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-europe-mill-en.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <Content Include="themes\ud\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="themes\ud\plugins\magnific-popup\jquery.magnific-popup.js" />
+    <Content Include="themes\ud\plugins\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="themes\ud\plugins\magnific-popup\magnific-popup.css" />
+    <Content Include="themes\ud\plugins\moment\moment.js" />
+    <Content Include="themes\ud\plugins\morris\morris.css" />
+    <Content Include="themes\ud\plugins\morris\morris.js" />
+    <Content Include="themes\ud\plugins\morris\morris.min.js" />
+    <Content Include="themes\ud\plugins\nestable\jquery.nestable.css" />
+    <Content Include="themes\ud\plugins\nestable\jquery.nestable.js" />
+    <Content Include="themes\ud\plugins\parsleyjs\parsley.min.js" />
+    <Content Include="themes\ud\plugins\peity\jquery.peity.min.js" />
+    <Content Include="themes\ud\plugins\raphael\raphael.min.js" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\dist\css\rwd-table.css" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\dist\css\rwd-table.min.css" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\dist\js\rwd-table.js" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\dist\js\rwd-table.min.js" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\src\js\rwd-table.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ar-AR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-bg-BG.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ca-ES.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-da-DK.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-da-DK.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-de-DE.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-de-DE.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-el-GR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-el-GR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-es-ES.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-es-ES.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-es-EU.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-es-EU.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fa-IR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fi-FI.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-fr-FR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-gl-ES.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-he-IL.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-he-IL.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-hr-HR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-hu-HU.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-id-ID.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-id-ID.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-it-IT.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-it-IT.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ja-JP.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ko-KR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-lt-LT.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-lt-LV.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-mn-MN.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-nb-NO.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-nl-NL.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pl-PL.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pt-BR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-pt-PT.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ro-RO.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ru-RU.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sk-SK.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sl-SI.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sr-RS.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-sv-SE.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-ta-IN.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-th-TH.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-th-TH.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-tr-TR.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-uk-UA.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-vi-VN.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-zh-CN.min.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="themes\ud\plugins\summernote\lang\summernote-zh-TW.min.js" />
+    <Content Include="themes\ud\plugins\summernote\summernote-bs4.css" />
+    <Content Include="themes\ud\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.all.js" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.all.min.js" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.css" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.js" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.min.css" />
+    <Content Include="themes\ud\plugins\sweet-alert2\sweetalert2.min.js" />
+    <Content Include="themes\ud\plugins\tiny-editable\mindmup-editabletable.js" />
+    <Content Include="themes\ud\plugins\tiny-editable\numeric-input-example.js" />
+    <Content Include="themes\ud\plugins\tinymce\jquery.tinymce.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\license.txt" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\example\dialog.html" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\atomic.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\bootstrap-atomic.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\bootstrap-browser.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\bootstrap-demo.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\bootstrap-prod.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\browser.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\demo.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\bolt\prod.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\config\dent\depend.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\scratch\compile\bootstrap.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\scratch\compile\theme.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\scratch\inline\theme.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\scratch\inline\theme.raw.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\demo\css\demo.css" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\demo\html\demo.html" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\demo\js\tinymce\inlite\Demo.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\alien\Arr.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\alien\Bookmark.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\alien\Unlink.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\alien\Uuid.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\Actions.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\Convert.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\ElementMatcher.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\Layout.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\Matcher.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\Measure.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\PredicateId.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\SelectionMatcher.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\SkinLoader.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\core\UrlType.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\file\Conversions.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\file\Picker.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\Theme.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\ui\Buttons.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\ui\Forms.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\ui\Panel.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\main\js\tinymce\inlite\ui\Toolbar.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\atomic\alien\ArrTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\atomic\alien\UuidTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\atomic\core\ConvertTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\atomic\core\MatcherTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\atomic\core\UrlTypeTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\alien\BookmarkTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\alien\UnlinkTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\ActionsTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\ElementMatcher.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\LayoutTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\MeasureTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\PredicateIdTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\core\SelectionMatcherTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\file\ConversionsTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\file\SelectionMatcher.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\js\browser\ThemeTest.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\themes\modern\theme.min.js" />
+    <Content Include="themes\ud\plugins\tinymce\tinymce.min.js" />
+    <Content Include="themes\ud\plugins\x-editable\css\bootstrap-editable.css" />
+    <Content Include="themes\ud\plugins\x-editable\img\clear.png" />
+    <Content Include="themes\ud\plugins\x-editable\img\loading.gif" />
+    <Content Include="themes\ud\plugins\x-editable\js\bootstrap-editable.js" />
+    <Content Include="themes\ud\plugins\x-editable\js\bootstrap-editable.min.js" />
+    <Content Include="uploads\media\jabbar.jpg" />
+    <Content Include="uploads\media\no-cover.jpg" />
+    <Content Include="uploads\media\no-image.jpg" />
+    <Content Include="uploads\media\zia.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="themes\default\fonts\fontawesome-webfont.eot" />
+    <Content Include="themes\default\fonts\fontawesome-webfont.ttf" />
+    <Content Include="themes\default\fonts\fontawesome-webfont.woff" />
+    <Content Include="themes\default\fonts\fontawesome-webfont.woff2" />
+    <Content Include="themes\default\fonts\FontAwesome.otf" />
+    <Content Include="themes\default\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="themes\default\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="themes\default\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="themes\default\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="themes\default\fonts\icomoon.eot" />
+    <Content Include="themes\default\fonts\icomoon.ttf" />
+    <Content Include="themes\default\fonts\icomoon.woff" />
+    <Content Include="themes\default\images\Thumbs.db" />
+    <None Include="packages.config" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="themes\ud\css\icons.css.map" />
+    <Content Include="themes\ud\css\style.css.map" />
+    <Content Include="themes\ud\css\typicons.css.map" />
+    <Content Include="themes\ud\fonts\dripicons-v2.eot" />
+    <Content Include="themes\ud\fonts\dripicons-v2.ttf" />
+    <Content Include="themes\ud\fonts\dripicons-v2.woff" />
+    <Content Include="themes\ud\fonts\fa-brands-400.eot" />
+    <Content Include="themes\ud\fonts\fa-brands-400.ttf" />
+    <Content Include="themes\ud\fonts\fa-brands-400.woff" />
+    <Content Include="themes\ud\fonts\fa-brands-400.woff2" />
+    <Content Include="themes\ud\fonts\fa-regular-400.eot" />
+    <Content Include="themes\ud\fonts\fa-regular-400.ttf" />
+    <Content Include="themes\ud\fonts\fa-regular-400.woff" />
+    <Content Include="themes\ud\fonts\fa-regular-400.woff2" />
+    <Content Include="themes\ud\fonts\fa-solid-900.eot" />
+    <Content Include="themes\ud\fonts\fa-solid-900.ttf" />
+    <Content Include="themes\ud\fonts\fa-solid-900.woff" />
+    <Content Include="themes\ud\fonts\fa-solid-900.woff2" />
+    <Content Include="themes\ud\fonts\ionicons.eot" />
+    <Content Include="themes\ud\fonts\ionicons.ttf" />
+    <Content Include="themes\ud\fonts\ionicons.woff" />
+    <Content Include="themes\ud\fonts\ionicons.woff2" />
+    <Content Include="themes\ud\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="themes\ud\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="themes\ud\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="themes\ud\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="themes\ud\fonts\outlined-iconset.eot" />
+    <Content Include="themes\ud\fonts\outlined-iconset.ttf" />
+    <Content Include="themes\ud\fonts\outlined-iconset.woff" />
+    <Content Include="themes\ud\fonts\themify.eot" />
+    <Content Include="themes\ud\fonts\themify.ttf" />
+    <Content Include="themes\ud\fonts\themify.woff" />
+    <Content Include="themes\ud\fonts\typicons.eot" />
+    <Content Include="themes\ud\fonts\typicons.scss" />
+    <Content Include="themes\ud\fonts\typicons.ttf" />
+    <Content Include="themes\ud\fonts\typicons.woff" />
+    <Content Include="themes\ud\icons\_dripicons-2.scss" />
+    <Content Include="themes\ud\icons\_fontawesome.scss" />
+    <Content Include="themes\ud\icons\_ionicons.scss" />
+    <Content Include="themes\ud\icons\_materialdesignicons.scss" />
+    <Content Include="themes\ud\icons\_outline.scss" />
+    <Content Include="themes\ud\icons\_themify-icons.scss" />
+    <Content Include="themes\ud\icons\_typicons.scss" />
+    <Content Include="themes\ud\scss\icons.scss" />
+    <Content Include="themes\ud\scss\style.scss" />
+    <Content Include="themes\ud\scss\_alertify.scss" />
+    <Content Include="themes\ud\scss\_alerts.scss" />
+    <Content Include="themes\ud\scss\_badge.scss" />
+    <Content Include="themes\ud\scss\_bootstrap-custom.scss" />
+    <Content Include="themes\ud\scss\_buttons.scss" />
+    <Content Include="themes\ud\scss\_calendar.scss" />
+    <Content Include="themes\ud\scss\_cards.scss" />
+    <Content Include="themes\ud\scss\_charts.scss" />
+    <Content Include="themes\ud\scss\_demo-only.scss" />
+    <Content Include="themes\ud\scss\_email.scss" />
+    <Content Include="themes\ud\scss\_faq.scss" />
+    <Content Include="themes\ud\scss\_form-advanced.scss" />
+    <Content Include="themes\ud\scss\_form-editor.scss" />
+    <Content Include="themes\ud\scss\_form-elements.scss" />
+    <Content Include="themes\ud\scss\_form-upload.scss" />
+    <Content Include="themes\ud\scss\_form-validation.scss" />
+    <Content Include="themes\ud\scss\_general.scss" />
+    <Content Include="themes\ud\scss\_helper.scss" />
+    <Content Include="themes\ud\scss\_maps.scss" />
+    <Content Include="themes\ud\scss\_menu.scss" />
+    <Content Include="themes\ud\scss\_nestable.scss" />
+    <Content Include="themes\ud\scss\_pages.scss" />
+    <Content Include="themes\ud\scss\_pagination.scss" />
+    <Content Include="themes\ud\scss\_popover-tooltips.scss" />
+    <Content Include="themes\ud\scss\_pricing.scss" />
+    <Content Include="themes\ud\scss\_progressbar.scss" />
+    <Content Include="themes\ud\scss\_range-slider.scss" />
+    <Content Include="themes\ud\scss\_summernote.scss" />
+    <Content Include="themes\ud\scss\_sweet-alert.scss" />
+    <Content Include="themes\ud\scss\_tables.scss" />
+    <Content Include="themes\ud\scss\_timeline.scss" />
+    <Content Include="themes\ud\scss\_variables.scss" />
+    <Content Include="themes\ud\scss\_waves.scss" />
+    <Content Include="themes\ud\scss\_widgets.scss" />
+    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css.map" />
+    <Content Include="themes\ud\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css.map" />
+    <Content Include="themes\ud\plugins\datatables\json\scroller-demo.json" />
+    <Content Include="themes\ud\plugins\dropzone\dist\readme.md" />
+    <Content Include="themes\ud\plugins\gmaps\gmaps.min.js.map" />
+    <Content Include="themes\ud\plugins\RWD-Table-Patterns\src\less\rwd-table.less" />
+    <Content Include="themes\ud\plugins\summernote\font\summernote.eot" />
+    <Content Include="themes\ud\plugins\summernote\font\summernote.ttf" />
+    <Content Include="themes\ud\plugins\summernote\font\summernote.woff" />
+    <Content Include="themes\ud\plugins\tinymce\langs\readme.md" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="themes\ud\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="themes\ud\plugins\tinymce\themes\inlite\src\test\.eslintrc" />
+    <EntityDeploy Include="SZModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SZModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SZModel.edmx.diagram">
+      <DependentUpon>SZModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\Partial\playerdetail.cshtml" />
+    <Content Include="Views\Shared\Partial\coachdetail.cshtml" />
+    <Content Include="Views\Shared\Partial\clubdetail.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\Home\Players.cshtml" />
+    <Content Include="Views\Home\PlayerDetail.cshtml" />
+    <Content Include="Views\Home\Coachs.cshtml" />
+    <Content Include="Views\Home\CoachDetail.cshtml" />
+    <Content Include="Views\Home\Clubs.cshtml" />
+    <Content Include="Views\Home\ClubDetail.cshtml" />
+    <Content Include="Views\Home\Teams.cshtml" />
+    <Content Include="Views\Home\TeamDetail.cshtml" />
+    <Content Include="Views\Home\Matchs.cshtml" />
+    <Content Include="Views\Home\error404.cshtml" />
+    <Content Include="Views\Shared\Partial\feedback\fbform.cshtml" />
+    <Content Include="Views\Shared\Partial\feedback\fbcontainer.cshtml" />
+    <Content Include="Views\Shared\Partial\feedback\fderr.cshtml" />
+    <Content Include="Views\PlayerActivities\Index.cshtml" />
+    <Content Include="Views\Global\Error401.cshtml" />
+    <Content Include="Views\PlayerActivities\Enrollments.cshtml" />
+    <Content Include="Views\PlayerActivities\EnrollmentRequests.cshtml" />
+    <Content Include="Views\PlayerActivities\CreateEnrollmentRequest.cshtml" />
+    <Content Include="Views\PlayerActivities\Reviews.cshtml" />
+    <Content Include="Views\CoachActivities\YourPlayers.cshtml" />
+    <Content Include="Views\CoachActivities\CreateEnrollmentRequest.cshtml" />
+    <Content Include="Views\CoachActivities\EnrollmentRequests.cshtml" />
+    <Content Include="Views\CoachActivities\Enrollments.cshtml" />
+    <Content Include="Views\CoachActivities\Reviews.cshtml" />
+    <Content Include="Views\Club\Teams.cshtml" />
+    <Content Include="Views\Club\CreateTeam.cshtml" />
+    <Content Include="Views\Club\MatchScheduals.cshtml" />
+    <Content Include="Views\Club\MatchSchedualRequests.cshtml" />
+    <Content Include="Views\Club\SchedualMatch.cshtml" />
+    <Content Include="Views\Club\MatchResult.cshtml" />
+    <Content Include="Views\Club\PlayerAssociationRequest.cshtml" />
+    <Content Include="Views\Club\EnrolledPlayers.cshtml" />
+    <Content Include="Views\Club\CoachAssociationRequest.cshtml" />
+    <Content Include="Views\Club\EnrolledCoachs.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\Clubs.cshtml" />
+    <Content Include="Views\Admin\Coachs.cshtml" />
+    <Content Include="Views\Admin\Players.cshtml" />
+    <Content Include="Views\Home\MatchrResults.cshtml" />
+    <Content Include="Views\Shared\Partial\admin.cshtml" />
+    <Content Include="Views\Membership\Dues.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53862</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53862/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "error404";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Page Heading & Breadcrumbs  -->
+<div class="page-heading-breadcrumbs">
+    <div class="container">
+        <h2>404 Error</h2>
+        <ul class="breadcrumbs">
+            <li><a href="#">Home</a></li>
+            <li>404 Error</li>
+        </ul>
+    </div>
+</div>
+<!-- Page Heading & Breadcrumbs  -->
+<!-- Page Heading banner -->
+<div class="overlay-dark theme-padding parallax-window" data-appear-top-offset="600" data-parallax="scroll" data-image-src="images/inner-banner/img-08.jpg">
+</div>
+<!-- Page Heading banner -->
+<!-- Main Content -->
+<main class="main-content">
+
+    <!-- 404 Error -->
+    <div class="error-holder theme-padding">
+        <div class="container">
+            <div class="error-content-holder">
+                <div class="error-content">
+                    <h1>4<i class="fa fa-futbol-o"></i>4<span class="font-open-sans">Error</span></h1>
+                    <p>@ViewBag.Message</p>
+                    <a class="btn red-btn" href="/">back to homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 404 Error -->
+
+</main>
+<!-- Main Content -->

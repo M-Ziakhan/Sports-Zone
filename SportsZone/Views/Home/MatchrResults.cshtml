@@ -1,0 +1,37 @@
+﻿@model List<match_result>
+
+<div class="theme-padding white-bg">
+    <div class="container">
+        <div class="row">
+            <div class="last-matches styel-1">
+                <h3><span>POINTS TABLE</span></h3>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Match</th>
+                            <th>Club</th>
+                            <th>Vs</th>
+                            <th>Point</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>1</td>
+                                <td>@Model[i].matches.mid | @Model[i].matches.games.gamename | @Model[i].matches.loc </td>
+                                <td>@Model[i].clubs.clubname</td>
+                                <td>@Model[i].matches.clubs.clubname <span class="badge badge-info">Vs</span> @Model[i].matches.clubs1.clubname</td>
+                                <td>@Model[i].points</td>
+                                <td>@Model[i].C_status</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+

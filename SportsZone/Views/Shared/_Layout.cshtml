@@ -1,0 +1,217 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="" />
+    <!-- Document Title -->
+    <!-- StyleSheets -->
+    @Styles.Render("~/bundles/css")
+    <!-- FontsOnline -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800|Open+Sans:400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- JavaScripts -->
+    @Scripts.Render("~/bundles/mod")
+</head>
+<body>
+
+    <!-- Wrapper -->
+    <div class="wrap push">
+
+        <!-- Header -->
+        <header class="header style-3">
+
+            <!-- Top bar -->
+            <div class="topbar-and-logobar">
+                <div class="container">
+
+                    <!-- Responsive Button -->
+                    <div class="responsive-btn pull-right">
+                        <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <!-- Responsive Button -->
+                    <!-- User Login Option -->
+                    <ul class="user-login-option pull-right">
+                        <li class="social-icon">
+                            <ul class="social-icons style-5">
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="login-modal">
+                            @if (Session["IsLoggedIn"] == null)
+                            {
+                              <a href="/account/login" class="login"><i class="fa fa-user"></i>Login / Join</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("account","basic-profile")" class="login"><i class="fa fa-user"></i>Hey, There!</a>
+                            }
+                        </li>
+                        <li class="language-dropdown">
+                            <a id="choses-lang" href="#"><i class="fa fa-globe"></i>Eng<i class="fa fa-caret-down"></i></a>
+                            <ul id="language-dropdown">
+                                <li><a href="#"><img src="~/themes/default/images/flags/img-02.jpg" alt="">ger</a></li>
+                                <li><a href="#"><img src="~/themes/default/images/flags/img-03.jpg" alt="">fra</a></li>
+                                <li><a href="#"><img src="~/themes/default/images/flags/img-04.jpg" alt="">bra</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- User Login Option -->
+
+                </div>
+            </div>
+            <!-- Top bar -->
+            <!-- Nav -->
+            <div class="nav-holder">
+                <div class="container">
+                    <div class="maga-drop-wrap">
+
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="/"><img src="~/themes/default/images/our-logo.png" style="height:100px; width:100px" alt=""></a>
+                        </div>
+                        <!-- Logo -->
+                        <!-- Search Bar -->
+                        <div class="search-bar-holder pull-right">
+                            <div class="search-bar" onclick="navigatetoclubs()">
+                                <input type="text" class="form-control" placeholder="search enter please...">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                        <!-- Search Bar -->
+                        <!-- Nav List -->
+                        <ul class="nav-list pull-right">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/clubs">Clubs</a></li>
+                            <li><a href="/coachs">Coaches</a></li>
+                            <li><a href="/players">Players</a></li>
+                            <li>
+                                <a href="#">Matchs</a>
+                                <ul>
+                                    <li><a href="/matchs">Matchs</a></li>
+                                    <li><a href="/match-results">Match Result</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/pricing">Pricing</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                        <!-- Nav List -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Nav -->
+
+        </header>
+        <!-- Header -->
+        @RenderBody()
+        <!-- Main Content -->
+        <!-- Footer -->
+        <footer class="main-footer style-2">
+
+            <!-- Footer Columns -->
+            <div class="container">
+
+                <!-- Footer columns -->
+                <div class="footer-column border-0">
+                    <div class="row">
+
+                        <!-- Footer Column -->
+                        <div class="col-sm-4 col-xs-6 r-full-width-2 r-full-width">
+                            <div class="column-widget h-white">
+                                <div class="logo-column p-white">
+                                    <img class="footer-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6gdDCJVzolbyHAvIi11ypqX43apBcEh2LKQ&usqp=CAU"style="max-width:150px" alt="">
+                                    <ul class="address-list style-2">
+                                        <li><span>Address:</span>COMSATS Universty Islamabad Vehari</li>
+                                        <li><span>Phone Number:</span>03023545618</li>
+                                        <li><span>Email Address:</span>mzikhang@gmail.com</li>
+                                    </ul>
+                                    <span class="follow-us">follow us </span>
+                                    <ul class="social-icons">
+                                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                        <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                        <li><a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer Column -->
+                        <!-- Footer Column -->
+                        <div class="col-sm-4 col-xs-6 r-full-width-2 r-full-width">
+                            <div class="column-widget h-white">
+                                <h5>Top Club</h5>
+                                <a href="#"><img src="https://www.bls.gov/spotlight/2017/sports-and-exercise/images/cover_image.jpg" alt="" style="width:360px; height:212px"></a>
+                            </div>
+                        </div>
+                        <!-- Footer Column -->
+                        <!-- Footer Column -->
+                        <div class="col-sm-4 col-xs-6 r-full-width-2 r-full-width">
+                            <div class="column-widget h-white">
+                                <h5>External Images</h5>
+                                <ul class="brand-icons-slider-2">
+                                    <li>
+                                        <a href="#"><img src="https://lh3.googleusercontent.com/proxy/mDCwSvRCUdo46oFeFnqfprRroYD_55KEttAKADqDgDdpLUoGY3CYpRJKT77i3Kf00bIZlB9yRWPPzZgWPbzS6EvcMU3k" alt="" style="width:70px"; height="62px"></a>
+                                        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVKvaUL678PuXEuF_VDXLCBnIgP37O7rMcjA&usqp=CAU" alt="" style="width:70px"; height="63px"></a>
+                                        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6wXPmGxKG9d6LZ8iJCzMDpqQD7pQA8YM7Lg&usqp=CAU" alt="" style="width:66px"; height="54px"></a>
+                                        <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI_Vw0851nX6oyV3wXaXwc6-X7DnB0gDpEYg&usqp=CAU" alt="" style="width:66px"; height="54px"></a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Column -->
+
+                    </div>
+                </div>
+                <!-- Footer columns -->
+
+            </div>
+            <!-- Footer Columns -->
+            <!-- Copy Rights -->
+
+        </footer>
+        <!-- Footer -->
+
+    </div>
+    <!-- Wrapper -->
+    <!-- Slide Menu -->
+    <nav id="menu" class="responive-nav">
+        <a class="r-nav-logo" href="home-1.html"><img src="~/themes/default/images/logo-1.png" alt=""></a>
+        <ul class="respoinve-nav-list">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li><a href="/about">about</a></li>
+            <li><a href="/clubs">clubs</a></li>
+            <li><a href="/coachs">Coaches</a></li>
+            <li><a href="/players">players</a></li>
+            <li>
+                <a href="#">Matchs</a>
+                <ul>
+                    <li><a href="/matchs">Matchs</a></li>
+                    <li><a href="/match-results">Match Result</a></li>
+                </ul>
+            </li>
+            <li><a href="/contact">contact</a></li>
+        </ul>
+    </nav>
+    <!-- Slide Menu -->
+    <!-- Java Script -->
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
+    <script>
+        function navigatetoclubs()
+        {
+            window.location.href = "/clubs";
+        }
+    </script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</body>
+</html>

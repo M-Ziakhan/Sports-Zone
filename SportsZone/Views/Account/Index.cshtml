@@ -1,0 +1,145 @@
+﻿@model List<users>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>Welcome | Your Account | JZ Sports Zone</title>
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="page-title-box">
+
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Dashboard</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active">Welcome to @Model[0].username</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            @if (ViewBag.Message != null)
+            {
+                <p style="text-align:center; color:red">@ViewBag.Message</p>
+            }
+        </div>
+        <!-- end page-title -->
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/account/UpdateUser" method="post" id="basicprflfrm">
+                            <h4 class="mt-0 header-title mb-4">Basic Profile Detail</h4>
+                            <div class="form-group row" style="display:none">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">User ID</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="userid" value="@Model[0].userid">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">I'm</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="Email" name="Email" value="@Model[0].usertype" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].username" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Member Since</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].C_date.ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Account Status</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].C_status.Value.ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="Email" name="Email" value="@Model[0].email" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Phone</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="Phone" value="@Model[0].phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">New Password</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" name="passwd" value="" placeholder="leave blank if you don't want to change" minlength="6" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Is Email Verified</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].isemail.Value.ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Is Phone Verified</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].isphone.Value.ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Is Payment Verified</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" value="@Model[0].ispayment.Value.ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input class="form-control btn btn-outline-success" type="submit" value="Save" form="basicprflfrm">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body" id="type-of">
+                        <div class="card-body" style="text-align:center">
+                            <div class="spinner-border text-danger" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var url = "/account/GetPartial"
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function (response) {
+                        $("#type-of").html(response);
+                    },
+                    error: function () {
+                        console.error('Unable to contact with server!')
+                    }
+                })
+            });
+    </script>
+}

@@ -1,0 +1,144 @@
+﻿@model List<coach_associations_request>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>Your Enrollment Requests | JZ Sports Zone</title>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Your Enrollments Requests</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Coach Activities</a>
+                            </li>
+                            <li class="breadcrumb-item active">Enrollment Requests</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Your Enrollment Requests in Clubs and Teams</h4>
+                        <p class="sub-title">
+                            Your enrollment request will turn into enrollments once you're approved by club to be enrolled with.
+                            The request status will be marked close when a club approve/reject it and if you withdraw it.
+                            You must have to withdraw the request before it marked as close!
+                        </p>
+
+                        <div id="alert-msg" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <p id="errmsg"></p>
+                        </div>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Club</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Since</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model.Count == 0)
+                                {
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model[i].carid</td>
+                                            <td>@Model[i].clubs.clubname</td>
+                                            <td>@Model[i].teams.name</td>
+                                            <td>@Model[i].games_positions.position</td>
+                                            <td>@Model[i].C_date</td>
+                                            @if (Model[i].carstatus == true)
+                                            {
+                                                <td><span class="badge badge-success">Open</span></td>
+                                                <td><a href="#" title="Withdraw this request!" id="@Model[i].carid-@Model[i].coachid" onclick="withdrawrequest(this.id)" class="btn btn-outline-danger"><i class="fa fa-thumbs-down"></i> Withdraw Request</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge badge-danger">Closed</span></td>
+                                                <td><a disabled="" title="This request can't be withdrwan, because it's already closed!"><i class="fa fa-thumbs-down"></i> Withdraw Request</a></td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+    {
+    <script>
+        function withdrawrequest(id) {
+            var url = "/coach-activities/withdrawenrollmentrequest";
+            var paid = id.split("-")[0];
+            var pid = id.split("-")[1];
+            var data = new FormData();
+            data.append("carid", paid);
+            data.append("coachid", pid);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response.Msg);
+                    setTimeout(function () { location.reload() }, 2000);
+                },
+                error: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response);
+                }
+            })
+        }
+    </script>
+}
+

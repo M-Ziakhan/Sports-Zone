@@ -1,0 +1,134 @@
+﻿@model teams
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    List<player_associations> players = (List<player_associations>)ViewBag.Players;
+}
+<title>@Model.name | Team | JZ Sport Zone</title>
+<div class="page-heading-breadcrumbs">
+    <div class="container">
+        <h2>@Model.name | Team</h2>
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li>Teams</li>
+            <li>@Model.name</li>
+        </ul>
+    </div>
+</div>
+<!-- Page Heading & Breadcrumbs  -->
+<!-- Page Heading banner -->
+<div style="height:400px; background-image:url(/uploads/media/@Model.cover); background-position:center; background-size:contain" class="overlay-dark theme-padding parallax-window">
+</div>
+<!-- Page Heading banner -->
+<!-- Main Content -->
+<main class="main-content">
+
+    <!-- Team Detail -->
+    <div class="team-detail-holder theme-padding white-bg">
+        <div class="container">
+
+            <!-- Row Holder -->
+            <div class="row">
+
+                <!-- Team without Hover -->
+                <div class="col-lg-3 col-md-3 col-sm-5">
+                    <div class="team-column without-hover">
+                        <img src="~/uploads/media/@Model.logo" alt="">
+                        <span class="player-number">T-@Model.teamid</span>
+                        <div class="team-detail">
+                            <h5>@Model.name</h5>
+                            <div class="detail-inner">
+                                <ul>
+                                    <li>Players</li>
+                                    <li>Game</li>
+                                    <li>-</li>
+                                    <li>-</li>
+                                    <li>Fallow us on</li>
+                                </ul>
+                                <ul>
+                                    @if (players == null)
+                                    {
+                                        <li>0</li>
+                                    }
+                                    else
+                                    {
+                                        <li>@players.Count</li>
+                                    }
+
+                                    <li>@Model.games.gamename</li>
+                                    <li>-</li>
+                                    <li>-</li>
+                                    <li>
+                                        <ul class="social-icons">
+                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                            <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team without Hover -->
+                <!-- Detail -->
+                <div class="col-lg-9 col-sm-12 pull-right top-palyer">
+                    <div class="row">
+                        @if (players==null)
+                        {
+                         <h3>No players in this team!</h3>
+                        }
+                        else
+                        {
+                            for (int i = 0; i < players.Count; i++)
+                            {
+                    <!-- Team Column -->
+                    <div class="col-sm-4 col-xs-6 r-full-width">
+                        <div class="team-column">
+                            <img src="~/uploads/media/@players[i].players.photo" alt="@players[0].players.playername">
+                            <span class="player-number">P-@players[i].players.playerid</span>
+                            <div class="team-detail">
+                                <h5><a href="/players/@players[0].players.users.username">@players[i].players.playername</a></h5>
+                                <span class="desination">@players[i].players.games_positions.position</span>
+                                <div class="detail-inner">
+                                    <ul>
+                                        <li>Age</li>
+                                        <li>Height</li>
+                                        <li>Player ID</li>
+                                        <li>Player ID</li>
+                                        <li>Follow</li>
+                                    </ul>
+                                    <ul>
+                                        <li>@players[i].players.age</li>
+                                        <li>@players[i].players.height</li>
+                                        <li>SP-@players[i].players.playerid</li>
+                                        <li>-</li>
+                                        <li>
+                                            <ul class="social-icons">
+                                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                                <li><a class="pinterest" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Team Column -->
+                            }
+                        }
+                    </div>
+                </div>
+                <!-- Detail -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Team Detail -->
+
+</main>
+<!-- Main Content -->

@@ -1,0 +1,98 @@
+﻿@model List<coachs>
+@{
+    ViewBag.Title = "Players";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Our Coachs | JZ Sports Zone</title>
+<div class="page-heading-breadcrumbs">
+    <div class="container">
+        <h2>Our Coachs | Team</h2>
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li>Coachs</li>
+        </ul>
+    </div>
+</div>
+<!-- Page Heading & Breadcrumbs  -->
+<!-- Page Heading banner -->
+<div style="height:400px; background-image:url(https://img.fifa.com/image/upload/t_l1/yclgx78qq6zarwrimya7.jpg); background-position:center; background-size:contain" class="overlay-dark theme-padding parallax-window">
+</div>
+<main class="main-content">
+    <div class="team-detail-holder theme-padding white-bg" style="padding:20px 0px">
+        <div class="container">
+            <div class="row" style="border: red 2px solid; padding:10px">
+                <div style="width:75%; display:inline-block">
+                    <input id="nametxt" type="text" class="form-control" style="height:38px" placeholder="player name or whatever" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+                <div style="width:20%; display:inline-block">
+                    <button onclick="search();" style="width:100%; height:38px" class="btn btn-danger" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Detail -->
+    <div class="team-detail-holder white-bg">
+        <div class="container">
+            <div class="top-palyer">
+                <div class="row" style="margin-bottom:10px">
+                    @for(int i=0; i<Model.Count;i++)
+                    {
+                        <!-- Team Column -->
+                        <div class="col-lg-3 col-md-4 col-sm-12 r-full-width">
+                            <div class="team-column">
+                                <img src="~/uploads/media/@Model[i].picture" alt="@Model[i].name" style="height:416px; width:269px">
+                                <span class="player-number">H-@Model[i].coachid</span>
+                                <div class="team-detail">
+                                    <h5><a href="/coachs/@Model[i].users.username">@Model[i].name</a></h5>
+                                    <span class="desination">@Model[i].games_positions.position</span>
+                                    <div class="detail-inner">
+                                        <ul>
+                                            <li>Age</li>
+                                            <li>-</li>
+                                            <li>Coach ID</li>
+                                            <li>For</li>
+                                            <li>Follow</li>
+                                        </ul>
+                                        <ul>
+                                            <li>@Model[i].age</li>
+                                            <li>-</li>
+                                            <li>JZ-H-@Model[i].coachid</li>
+                                            <li>@Model[i].games_positions.position</li>
+                                            <li>
+                                                <ul class="social-icons">
+                                                    <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a class="youtube" href="https://youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                                                    <li><a class="pinterest" href="https://pinterest.com"><i class="fa fa-pinterest-p"></i></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Team Column -->
+                    }
+                </div>
+            </div>
+            <!-- Detail -->
+
+        </div>
+    </div>
+    <!-- Team Detail -->
+
+</main>
+@section scripts
+    {
+    <script>
+        function search()
+        {
+            var name = $("#nametxt").val();
+            window.location.href = "/coachs?name=" + name;
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        $("#nametxt").val(name);
+    </script>
+}
+

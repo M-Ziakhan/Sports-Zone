@@ -1,0 +1,45 @@
+﻿@model List<matches>
+<title> Scheduled Matchs | JZ Sports Zone</title>
+<div class="theme-padding white-bg">
+    <div class="container">
+        <div class="row">
+
+            <!-- match Contenet -->
+            <div class="matches-shedule-holder">
+                <div class="col-lg-9 col-sm-8">
+
+                    <!-- Matches Dates Shedule -->
+                    <div class="matches-dates-shedule">
+                        <ul>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <li>
+                                    <span class="pull-left"><img src="~/uploads/media/@Model[i].clubs.logo" alt="" style="width:71px; height:76px"></span>
+                                    <span class="pull-right"><img src="~/uploads/media/@Model[i].clubs1.logo" alt="" style="width:71px; height:76px"></span>
+                                    <div class="detail">
+                                        <strong>@Model[i].clubs.clubname<i class="red-color"> @Model[i].C_date</i> @Model[i].clubs1.clubname</strong>
+                                        <span class="location-marker"><i class="fa fa-map-marker"></i>@Model[i].loc</span>
+                                        <span class="location-marker"><i class="fa fa-futbol-o"></i> @Model[i].games.gamename</span>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- match Contenet -->
+            <!-- Aside -->
+            <div class="col-lg-3 col-sm-4">
+                <div class="aside-widget">
+                    <h3><span>Archive</span></h3>
+                    <div id="calendar" class="calendar"></div>
+                </div>
+                <!-- Aside Widget -->
+
+            </div>
+            <!-- Aside -->
+
+        </div>
+    </div>
+</div>
+

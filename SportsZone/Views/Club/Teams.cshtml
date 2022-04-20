@@ -1,0 +1,100 @@
+﻿@model List<teams>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>Your Teams | JZ Sports Zone</title>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Your Teams</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item active">Your Teams</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Your Teams (@(Model?.Count ?? 0))</h4>
+                        <p class="sub-title">
+                            Your all teams will display here
+                        </p>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                @ViewBag.Message
+                            </div>
+                        }
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Thumb</th>
+                                    <th>Name</th>
+                                    <th>Players</th>
+                                    <th>Detail</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model == null)
+                                {
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                    <tr>
+                                        <td>@Model[i].teamid</td>
+                                        <td><img src="~/uploads/media/@Model[i].logo" style="max-height:70px; max-width:50px" /></td>
+                                        <td>@Model[i].name</td>
+                                        <td><a href="/teams/@Model[i].teamid" target="_blank" class="btn btn-outline-primary btn-sm">Players <i class="fa fa-external-link-alt"></i>></a></td>
+                                        <td><a href="/teams/@Model[i].teamid" target="_blank" class="btn btn-outline-primary btn-sm">Detail <i class="fa fa-external-link-alt"></i>></a></td>
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>

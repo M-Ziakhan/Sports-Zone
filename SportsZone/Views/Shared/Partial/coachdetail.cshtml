@@ -1,0 +1,64 @@
+﻿@model coachs
+<form action="/account/SaveCoach" method="post" enctype="multipart/form-data" id="moreprflfrm">
+    <h4 class="mt-0 header-title mb-4">More Detail</h4>
+    <div class="form-group row" style="display:none">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Coach Detail</label>
+        <div class="col-sm-3">
+            <input class="form-control" type="text" name="coachid" value="@Model.coachid">
+        </div>
+        <div class="col-sm-3">
+            <input class="form-control" type="text" name="userid" value="@Model.userid">
+        </div>
+        <div class="col-sm-3">
+            <input class="form-control" type="text" name="positionid" value="@Model.positionid">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="name" value="@Model.name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Age</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="number" name="age" value="@Model.age">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Profil Photo [200x200]</label>
+        <div class="col-sm-5">
+            <input id="photouploaderp" class="form-control" type="file" name="photo1" value="">
+        </div>
+        <div class="col-sm-5">
+            <img id="fpreviewimgp" src="~/uploads/media/@Model.picture" style="width:100%" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Cover Photo [900x300]</label>
+        <div class="col-sm-6">
+            <input id="photouploaderc" class="form-control" type="file" name="photo2" value="">
+        </div>
+        <div class="col-sm-12">
+            <img id="fpreviewimgc" src="~/uploads/media/@Model.cover" style="width:100%" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Bio</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="bio" value="@Model.bio">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label">Specialize In</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="bio" value="@ViewBag.GameName" disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-text-input" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+            <input class="form-control btn btn-outline-success" type="submit" value="Save" form="moreprflfrm">
+        </div>
+    </div>
+</form>

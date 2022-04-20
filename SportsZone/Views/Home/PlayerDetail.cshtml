@@ -1,0 +1,414 @@
+﻿@model players
+@{
+    ViewBag.Title = "PlayerDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>@Model.playername | @Model.games_positions.position | JZ Sports Zone</title>
+<div class="page-heading-breadcrumbs">
+    <div class="container">
+        <h2>@Model.playername</h2>
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li><a href="/players">Players</a></li>
+            <li>@Model.playername</li>
+        </ul>
+    </div>
+</div>
+<!-- Page Heading & Breadcrumbs  -->
+<!-- Page Heading banner -->
+<div style="height:400px; background-image:url(/uploads/media/@Model.cover); background-position:center; background-size:contain" class="overlay-dark theme-padding parallax-window">
+</div>
+<main class="main-content theme-padding">
+
+    <!-- Team Detail -->
+    <div class="team-detail-holder white-bg">
+        <div class="container">
+
+            <!-- Club Detail -->
+            <div class="row">
+                <!-- Team without Hover -->
+                <div class="col-lg-3 col-md-3 col-sm-5">
+                    <div class="team-column without-hover">
+                        <img src="~/uploads/media/@Model.photo" alt="@Model.playername" style="height:416px; width:269px">
+                        <span class="player-number">P-@Model.playerid</span>
+                        <div class="team-detail">
+                            <h5>@Model.playername</h5>
+                            <span class="desination">Defender</span>
+                            <div class="detail-inner">
+                                <ul>
+                                    <li>Age</li>
+                                    <li>Height</li>
+                                    <li>Player ID</li>
+                                    <li>Position</li>
+                                    <li>Follow</li>
+                                </ul>
+                                <ul>
+                                    <li>@Model.age</li>
+                                    <li>@Model.height</li>
+                                    <li>JZ-P-@Model.playerid</li>
+                                    <li>@Model.games_positions.position</li>
+                                    <li>
+                                        <ul class="social-icons">
+                                            <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="https://youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                                            <li><a class="pinterest" href="https://pinterest.com"><i class="fa fa-pinterest-p"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team without Hover -->
+                <!-- Detail -->
+                <div class="col-lg-9 col-md-9 col-sm-7">
+
+                    <!-- Team Detail Content -->
+                    <div class="team-detail-content theme-padding-bottom">
+                        <h2>Detailed Overview</h2>
+                        <p id="playerbio"></p>
+                    </div>
+                </div>
+                <!-- Detail -->
+
+            </div>
+            <!-- Club Detail  -->
+            <!-- Top Teams -->
+            <div class="row" style="margin-bottom:10px">
+                <div class="col-lg-9 col-sm-12 pull-right top-palyer">
+                    <h2>Membership Detail</h2>
+                    <div class="row">
+                        @{
+                            if (ViewBag.PlayerAssociations == null)
+                            {
+                                <h3>Not yet associated with any club and team!</h3>
+                            }
+                            else
+                            {
+                                List<player_associations> pas = (List<player_associations>)ViewBag.PlayerAssociations;
+                                <!-- Team Column -->
+                                <div class="col-sm-4 col-xs-6 r-full-width">
+                                    <h3>With Club</h3>
+                                    <div class="team-column">
+                                        <img src="~/uploads/media/@pas[0].clubs.logo" alt="@pas[0].clubs.clubname" style="height:416px; width:269px">
+                                        <span class="player-number">C-@pas[0].clubs.clubid</span>
+                                        <div class="team-detail">
+                                            <h5><a href="/clubs/@pas[0].clubs.users.username"></a>@pas[0].clubs.clubname</h5>
+                                            <span class="desination">@pas[0].clubs.city</span>
+                                            <div class="detail-inner">
+                                                <ul>
+                                                    <li>City</li>
+                                                    <li>State</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>Fallow us on</li>
+                                                </ul>
+                                                <ul>
+                                                    <li>@pas[0].clubs.city</li>
+                                                    <li>@pas[0].clubs.C_state</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>
+                                                        <ul class="social-icons">
+                                                            <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a class="youtube" href="https://youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                                                            <li><a class="pinterest" href="https://pinterest.com"><i class="fa fa-pinterest-p"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-xs-6 r-full-width">
+                                    <h3>With Team</h3>
+                                    <div class="team-column">
+                                        <img src="~/uploads/media/@pas[0].teams.logo" alt="@pas[0].teams.name" style="height:416px; width:269px">
+                                        <span class="player-number">T-@pas[0].teams.teamid</span>
+                                        <div class="team-detail">
+                                            <h5><a href="/teams/@pas[0].teams.teamid">@pas[0].teams.name</a></h5>
+                                            <span class="desination">@pas[0].teams.games.gamename</span>
+                                            <div class="detail-inner">
+                                                <ul>
+                                                    <li>Game</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>Follow us on</li>
+                                                </ul>
+                                                <ul>
+                                                    <li>@pas[0].teams.games.gamename</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>-</li>
+                                                    <li>
+                                                        <ul class="social-icons">
+                                                            <li><a class="facebook" href="https://facebook.com"><i class="fa fa-facebook"></i></a></li>
+                                                            <li><a class="twitter" href="https://twitter.com"><i class="fa fa-twitter"></i></a></li>
+                                                            <li><a class="youtube" href="https://youtube.com"><i class="fa fa-youtube-play"></i></a></li>
+                                                            <li><a class="pinterest" href="https://pinterest.com"><i class="fa fa-pinterest-p"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:15px">
+                <div id="fbform" class="col-lg-9 col-sm-12 pull-right top-palyer" style="border:1px solid #ddd; box-shadow:5px #808080">
+                    <style>
+                        .range {
+                            display: table;
+                            position: relative;
+                            height: 25px;
+                            margin-top: 20px;
+                            background-color: rgb(245, 245, 245);
+                            border-radius: 4px;
+                            -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+                            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+                            cursor: pointer;
+                        }
+
+                            .range input[type="range"] {
+                                -webkit-appearance: none !important;
+                                -moz-appearance: none !important;
+                                -ms-appearance: none !important;
+                                -o-appearance: none !important;
+                                appearance: none !important;
+                                display: table-cell;
+                                width: 100%;
+                                background-color: transparent;
+                                height: 25px;
+                                cursor: pointer;
+                            }
+
+                                .range input[type="range"]::-webkit-slider-thumb {
+                                    -webkit-appearance: none !important;
+                                    -moz-appearance: none !important;
+                                    -ms-appearance: none !important;
+                                    -o-appearance: none !important;
+                                    appearance: none !important;
+                                    width: 11px;
+                                    height: 25px;
+                                    color: rgb(255, 255, 255);
+                                    text-align: center;
+                                    white-space: nowrap;
+                                    vertical-align: baseline;
+                                    border-radius: 0px;
+                                    background-color: rgb(153, 153, 153);
+                                }
+
+                                .range input[type="range"]::-moz-slider-thumb {
+                                    -webkit-appearance: none !important;
+                                    -moz-appearance: none !important;
+                                    -ms-appearance: none !important;
+                                    -o-appearance: none !important;
+                                    appearance: none !important;
+                                    width: 11px;
+                                    height: 25px;
+                                    color: rgb(255, 255, 255);
+                                    text-align: center;
+                                    white-space: nowrap;
+                                    vertical-align: baseline;
+                                    border-radius: 0px;
+                                    background-color: rgb(153, 153, 153);
+                                }
+
+                            .range output {
+                                display: table-cell;
+                                padding: 3px 5px 2px;
+                                min-width: 40px;
+                                color: rgb(255, 255, 255);
+                                background-color: rgb(153, 153, 153);
+                                text-align: center;
+                                text-decoration: none;
+                                border-radius: 4px;
+                                border-bottom-left-radius: 0;
+                                border-top-left-radius: 0;
+                                width: 1%;
+                                white-space: nowrap;
+                                vertical-align: middle;
+                                -webkit-transition: all 0.5s ease;
+                                -moz-transition: all 0.5s ease;
+                                -o-transition: all 0.5s ease;
+                                -ms-transition: all 0.5s ease;
+                                transition: all 0.5s ease;
+                                -webkit-user-select: none;
+                                -khtml-user-select: none;
+                                -moz-user-select: -moz-none;
+                                -o-user-select: none;
+                                user-select: none;
+                            }
+
+                            .range input[type="range"] {
+                                outline: none;
+                            }
+
+                            .range.range-primary input[type="range"]::-webkit-slider-thumb {
+                                background-color: rgb(66, 139, 202);
+                            }
+
+                            .range.range-primary input[type="range"]::-moz-slider-thumb {
+                                background-color: rgb(66, 139, 202);
+                            }
+
+                            .range.range-primary output {
+                                background-color: rgb(66, 139, 202);
+                            }
+
+                            .range.range-primary input[type="range"] {
+                                outline-color: rgb(66, 139, 202);
+                            }
+
+                            .range.range-success input[type="range"]::-webkit-slider-thumb {
+                                background-color: rgb(92, 184, 92);
+                            }
+
+                            .range.range-success input[type="range"]::-moz-slider-thumb {
+                                background-color: rgb(92, 184, 92);
+                            }
+
+                            .range.range-success output {
+                                background-color: rgb(92, 184, 92);
+                            }
+
+                            .range.range-success input[type="range"] {
+                                outline-color: rgb(92, 184, 92);
+                            }
+
+                            .range.range-info input[type="range"]::-webkit-slider-thumb {
+                                background-color: rgb(91, 192, 222);
+                            }
+
+                            .range.range-info input[type="range"]::-moz-slider-thumb {
+                                background-color: rgb(91, 192, 222);
+                            }
+
+                            .range.range-info output {
+                                background-color: rgb(91, 192, 222);
+                            }
+
+                            .range.range-info input[type="range"] {
+                                outline-color: rgb(91, 192, 222);
+                            }
+
+                            .range.range-warning input[type="range"]::-webkit-slider-thumb {
+                                background-color: rgb(240, 173, 78);
+                            }
+
+                            .range.range-warning input[type="range"]::-moz-slider-thumb {
+                                background-color: rgb(240, 173, 78);
+                            }
+
+                            .range.range-warning output {
+                                background-color: rgb(240, 173, 78);
+                            }
+
+                            .range.range-warning input[type="range"] {
+                                outline-color: rgb(240, 173, 78);
+                            }
+
+                            .range.range-danger input[type="range"]::-webkit-slider-thumb {
+                                background-color: rgb(217, 83, 79);
+                            }
+
+                            .range.range-danger input[type="range"]::-moz-slider-thumb {
+                                background-color: rgb(217, 83, 79);
+                            }
+
+                            .range.range-danger output {
+                                background-color: rgb(217, 83, 79);
+                            }
+
+                            .range.range-danger input[type="range"] {
+                                outline-color: rgb(217, 83, 79);
+                            }
+                    </style>
+                    <div class="row" style="border:1px #ddd solid; box-shadow:2px blue">
+                        <p style="text-align:center; margin:5px; color: red; font-size:16px" id="errmsg"></p>
+                        <form action="/feedback/submit" method="post" id="feedbackform">
+                            <input type="number" id="userid" name="userid" value="@Model.userid" style="display:none" />
+                            <input type="text" id="returnurl" name="returnurl" value="@Request.Url.AbsolutePath.ToString()" style="display:none" />
+                            <div class="col-xs-6">
+                                <div class="form-group" style="margin-top:20px">
+                                    <textarea class="form-control style-d" rows="11" id="comment" name="comment" placeholder="Write Comments here..."></textarea>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="range range-info">
+                                    <input type="range" name="rating" min="1" max="5" value="3" onchange="rangeInfo.value=value">
+                                    <output id="rangeInfo">3</output>
+                                </div>
+                                <h2 style="text-align:center; padding-top:20px; color:#ddd">Leave a honest feedback about performance and credibility!</h2>
+                                <div style="text-align:center; padding-top:20px">
+                                    <button class="btn btn-danger" type="submit">Submit Feedback</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:15px">
+                <div id="fbdata" class="col-lg-9 col-sm-12 pull-right top-palyer" style="border:1px solid #ddd; box-shadow:5px #808080">
+                    <div style="padding:20px; text-align:center">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: white none repeat scroll 0% 0%; display: block;" width="38px" height="38px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                            <g transform="translate(50 50)">
+                                <g transform="translate(-19 -19) scale(0.6)">
+                                    <g>
+                                        <animateTransform attributeName="transform" type="rotate" values="0;45" keyTimes="0;1" dur="0.2s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                        <path d="M31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 L37.3496987939662 -6.999999999999995 L47.3496987939662 -6.999999999999997 L47.349698793966205 6.999999999999973 L37.349698793966205 6.999999999999976 A38 38 0 0 1 31.359972760794346 21.460477824182686 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23" fill="#3c0f0f"></path>
+                                    </g>
+                                </g>
+                                <g transform="translate(19 19) scale(0.6)">
+                                    <g>
+                                        <animateTransform attributeName="transform" type="rotate" values="45;0" keyTimes="0;1" dur="0.2s" begin="-0.1s" repeatCount="indefinite"></animateTransform>
+                                        <path d="M-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 L37.3496987939662 -6.999999999999995 L47.3496987939662 -6.999999999999997 L47.349698793966205 6.999999999999973 L37.349698793966205 6.999999999999976 A38 38 0 0 1 31.359972760794346 21.460477824182686 L31.359972760794346 21.460477824182686 L38.431040572659825 28.531545636048158 L28.53154563604818 38.4310405726598 L21.460477824182703 31.35997276079433 A38 38 0 0 1 6.9999999999999964 37.3496987939662 L6.9999999999999964 37.3496987939662 L6.999999999999995 47.3496987939662 L-7.000000000000009 47.3496987939662 L-7.000000000000007 37.3496987939662 A38 38 0 0 1 -21.46047782418263 31.359972760794385 L-21.46047782418263 31.359972760794385 L-28.531545636048097 38.43104057265987 L-38.431040572659796 28.531545636048186 L-31.35997276079433 21.460477824182703 A38 38 0 0 1 -37.34969879396619 7.000000000000032 L-37.34969879396619 7.000000000000032 L-47.34969879396619 7.0000000000000355 L-47.3496987939662 -7.000000000000002 L-37.3496987939662 -7.000000000000005 A38 38 0 0 1 -31.359972760794346 -21.460477824182682 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23" fill="#f91a10"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        Loading reviews...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Detail -->
+
+</main>
+@section scripts{
+    <script>
+    var dt = `@Model.bio`;
+    $("#playerbio").text(dt);
+    </script>
+    <script>
+        $(document).ready(function () {
+            var url = "/feedback/loadfeedbacks";
+            var data = new FormData();
+            var uid = @Model.userid;
+            data.append("userid", uid);
+            $.ajax({
+                url: url,
+                data: data,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    $("#fbdata").html(response);
+                },
+                error: function () {
+                    console.error('Unable to contact with server for loading feedbacks!')
+                }
+            })
+        });
+    </script>
+}

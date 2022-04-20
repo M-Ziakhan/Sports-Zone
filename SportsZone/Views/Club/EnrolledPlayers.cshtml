@@ -1,0 +1,138 @@
+﻿@model List<player_associations>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>Enrolled Players | JZ Sports Zone</title>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Enrolled Players</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item active">Enrolled Players</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Enrolled Players</h4>
+                        <p class="sub-title">
+                            Your all players will display here which are enrolled with your club!
+                        </p>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                @ViewBag.Message
+                            </div>
+                        }
+                        <div id="alert-msg" class="alert alert-info alert-dismissible fade show" role="alert" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <p id="errmsg"></p>
+                        </div>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model == null || Model.Count==0)
+                                {
+                                <tr>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                <tr>
+                                    <td>@Model[i].paid</td>
+                                    <td>@Model[i].players.playername</td>
+                                    <td>@Model[i].teams.name</td>
+                                    <td>@Model[i].games_positions.position</td>
+                                    <td>@Model[i].C_date</td>
+                                    <td>                    
+                                        <a href="#" id="@Model[i].paid" onclick="removeplayer(this.id)" class="btn btn-outline-danger" title="Remove Enrolled Player?"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+    {
+    <script>
+        function removeplayer(id) {
+            var url = "/club-activities/removeplayer";
+            var data = new FormData();
+            data.append("paid", id);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response.Msg);
+                    setTimeout(() => { location.reload() }, 1000);
+                },
+                error: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html("Unable to contact with server");
+                }
+            })
+        }
+    </script>
+}
+

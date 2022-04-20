@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta content="Responsive admin theme build on top of Bootstrap 4" name="description" />
+    <meta content="" name="author" />
+    <link rel="shortcut icon" href="https://www.eurosoccerusa.com/wp-content/uploads/2016/10/cropped-favicon-1.png">
+    @Styles.Render("~/bundles/dashboard/css")
+</head>
+<body>
+    @{
+        List<users> _u = (List<users>)Session["Data"];
+    }
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Top Bar Start -->
+        <div class="topbar">
+
+            <!-- LOGO -->
+            <div class="topbar-left">
+                <a href="/account/me" class="logo">
+                    <img src="https://sportszonearuba.com/wp-content/uploads/2016/03/logo_sza4-4.png" class="logo-lg" alt="" height="60">
+                    <img src="~/themes/default/images/our-logo.png" class="logo-sm" alt="" height="22">
+                </a>
+            </div>
+            <nav class="navbar-custom">
+                <ul class="navbar-right list-inline float-right mb-0">
+                    <!-- full screen -->
+                    <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
+                        <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
+                            <i class="fas fa-expand noti-icon"></i>
+                        </a>
+                    </li>
+                    <li class="dropdown notification-list list-inline-item">
+                        <div class="dropdown notification-list nav-pro-img">
+                            <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <strong>@_u[0].username.ToUpper() | @_u[0].usertype.ToUpper()</strong>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
+                                <!-- item-->
+                                @if (_u[0].usertype == "Player")
+                                {
+                                    <a class="dropdown-item" href="/players/@_u[0].username"><i class="mdi mdi-account-circle"></i> My Profile <i style="font-size:12px" class="fa fa-external-link-alt"></i></a>
+                                }
+                                else if (_u[0].usertype == "Coach")
+                                {
+                                    <a class="dropdown-item" href="/coachs/@_u[0].username"><i class="mdi mdi-account-circle"></i> My Profile <i class="fa fa-external-link-alt"></i></a>
+                                }
+                                else if (_u[0].usertype == "Club")
+                                {
+                                    <a class="dropdown-item" href="/clubs/@_u[0].username"><i class="mdi mdi-account-circle"></i> My Profile <i class="fa fa-external-link-alt"></i></a>
+                                }
+                                else { }
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="/account/logout"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="list-inline menu-left mb-0">
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left waves-effect">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+        <!-- Top Bar End -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left side-menu">
+            <div class="slimscroll-menu" id="remove-scroll">
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu" id="side-menu">
+                        <li class="menu-title">Menu</li>
+                        <li>
+                            <a href="/account/me" class="waves-effect">
+                                <i class="dripicons-meter"></i><span> Dashboard </span>
+                            </a>
+                        </li>
+                        @if (_u[0].usertype == "Player")
+                        {
+                            <li>
+                                <a href="/players/@_u[0].username" target="_blank" class="waves-effect"><i class="dripicons-user"></i><span> My Profile </span> <i style="font-size:12px" class="fa fa-external-link-alt"></i></a>
+                            </li>
+                            <li class="menu-title">Enrollments</li>
+                            <li>
+                                <a href="/player-activities/my-enrollments" class="waves-effect"><i class="dripicons-information"></i><span> My Enrollments </span></a>
+                            </li>
+                            <li>
+                                <a href="/player-activities/enrollment-requests" class="waves-effect"><i class="dripicons-return"></i><span> Enrollment Requests </span></a>
+                            </li>
+                            <li>
+                                <a href="/player-activities/create-enrollment-request" class="waves-effect"><i class="dripicons-document-new"></i><span> New Enrollment </span></a>
+                            </li>
+                            <li class="menu-title">Reviews</li>
+                            <li>
+                                <a href="/player-activities/reviews" class="waves-effect"><i class="dripicons-box"></i><span> Your Reviews </span></a>
+                            </li>
+                        }
+                        else if (_u[0].usertype == "Coach")
+                        {
+                            <li>
+                                <a href="/coachs/@_u[0].username" target="_blank" class="waves-effect"><i class="dripicons-user"></i><span> My Profile </span> <i style="font-size:12px" class="fa fa-external-link-alt"></i></a>
+                            </li>
+                            <li class="menu-title">Enrollments</li>
+                            <li>
+                                <a href="/coach-activities/my-enrollments" class="waves-effect"><i class="dripicons-information"></i><span> My Enrollments </span></a>
+                            </li>
+                            <li>
+                                <a href="/coach-activities/enrollment-requests" class="waves-effect"><i class="dripicons-return"></i><span> Enrollment Requests </span></a>
+                            </li>
+                            <li>
+                                <a href="/coach-activities/create-enrollment-request" class="waves-effect"><i class="dripicons-document-new"></i><span> New Enrollment </span></a>
+                            </li>
+                            <li class="menu-title">Reviews</li>
+                            <li>
+                                <a href="/coach-activities/reviews" class="waves-effect"><i class="dripicons-box"></i><span> Your Reviews </span></a>
+                            </li>
+                            <li class="menu-title">Players</li>
+                            <li>
+                                <a href="/coach-activities/your-players" class="waves-effect"><i class="dripicons-user-group"></i><span> Your Players </span></a>
+                            </li>
+                        }
+                        else if (_u[0].usertype == "Club")
+                        {
+                            <li>
+                                <a href="/clubs/@_u[0].username" target="_blank" class="waves-effect"><i class="dripicons-user"></i><span> My Profile </span> <i style="font-size:12px" class="fa fa-external-link-alt"></i></a>
+                            </li>
+                            <li class="menu-title">Teams</li>
+                            <li>
+                                <a href="/club-activities/teams" class="waves-effect"><i class="dripicons-user-group"></i><span> My Teams </span></a>
+                            </li>
+                            <li>
+                                <a href="/club-activities/create-team" class="waves-effect"><i class="dripicons-plus"></i><span> Create Team </span></a>
+                            </li>
+                            <li class="menu-title">Matchs</li>
+                            <li>
+                                <a href="/club-activities/match-schedual-requests" class="waves-effect"><i class="dripicons-time-reverse"></i><span> Schedule Requests </span></a>
+                            </li>
+                            <li>
+                                <a href="/club-activities/match-scheduals" class="waves-effect"><i class="dripicons-archive"></i><span> Your Schedules </span></a>
+                            </li>
+                            <li>
+                                <a href="/club-activities/schedual-match" class="waves-effect"><i class="dripicons-plus"></i><span> New Schedule </span></a>
+                            </li>
+                            <li class="menu-title">Match Results</li>
+                            <li>
+                                <a href="/club-activities/match-result" class="waves-effect"><i class="dripicons-arrow-down"></i><span> Add Result </span></a>
+                            </li>
+                            <li class="menu-title">Players</li>
+                            <li>
+                                <a href="/club-activities/enrolled-players" class="waves-effect"><i class="dripicons-user-group"></i><span> Enrolled Players </span></a>
+                                <a href="/club-activities/player-requests" class="waves-effect"><i class="dripicons-user-group"></i><span> Player Requests </span></a>
+                            </li>
+                            <li class="menu-title">Coachs</li>
+                            <li>
+                                <a href="/club-activities/enrolled-coachs" class="waves-effect"><i class="dripicons-user-group"></i><span> Enrolled Coach </span></a>
+                                <a href="/club-activities/coach-requests" class="waves-effect"><i class="dripicons-user-group"></i><span> Coach Requests </span></a>
+                            </li>
+                        }
+                        else if (_u[0].usertype == "Admin")
+                        {
+                            <li>
+                                <a href="/admin-activities/users" class="waves-effect"><i class="dripicons-user-group"></i><span> Users </span></a>
+                                <a href="/admin-activities/clubs" class="waves-effect"><i class="dripicons-user-group"></i><span> Clubs </span></a>
+                                <a href="/admin-activities/coachs" class="waves-effect"><i class="dripicons-user-group"></i><span> Coachs </span></a>
+                                <a href="/admin-activities/players" class="waves-effect"><i class="dripicons-user-group"></i><span> Players </span></a>
+                            </li>
+                        }
+
+                        <li class="menu-title">Payments</li>
+                        <li>
+                            <a href="/membership/dues" class="waves-effect"><i class="fa fa-dollar-sign"></i><span> Payment &amp; Dues  </span></a>
+                        </li>
+                        <li class="menu-title">Account</li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                            <a class="waves-effect" href="/account/logout"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Sidebar -->
+                <div class="clearfix"></div>
+
+            </div>
+            <!-- Sidebar -left -->
+
+        </div>
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="content-page">
+            <!-- Start content -->
+            @RenderBody()
+            <!-- content -->
+
+            <footer class="footer">
+                © Zia & Jabbar <span class="d-none d-sm-inline-block"> - Comsats <i class="mdi mdi-heart text-danger"></i> FYP</span>.
+            </footer>
+
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right content here -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- END wrapper -->
+    @Scripts.Render("~/bundles/dashboard/js")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

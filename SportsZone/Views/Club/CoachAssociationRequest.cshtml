@@ -1,0 +1,152 @@
+﻿@model List<coach_associations_request>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>Coach Association Requests  | JZ Sports Zone</title>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Coach Association Requests</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item active">Coach Requests</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Coach Requests</h4>
+                        <p class="sub-title">
+                            Your all coachs request will display here! You can accept or reject the requests
+                        </p>
+                        <div id="alert-msg" class="alert alert-info alert-dismissible fade show" role="alert" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <p id="errmsg"></p>
+                        </div>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Team</th>
+                                    <th>Role</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model == null || Model.Count==0)
+                                {
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model[i].carid</td>
+                                            <td>@Model[i].coachs.name</td>
+                                            <td>@Model[i].teams.name</td>
+                                            <td>@Model[i].games_positions.position</td>
+                                            <td>@Model[i].C_date</td>
+                                            @if (Model[i].carstatus == true)
+                                            {
+                                                <td><span class="badge badge-success">Open</span></td>
+                                            }
+                                            else
+                                            {
+                                                <td><span class="badge badge-dark">Closed</span></td>
+                                            }
+                                            @if (Model[i].carstatus == true)
+                                            {
+                                                <td>
+                                                    <a style="display:inline-block" href="#" id="@Model[i].carid-yes" onclick="whattodo(this.id)" class="btn btn-outline-success" title="Accept Request and Enroll Coach Into Team"><i class="fa fa-check"></i></a>
+                                                    <a style="display:inline-block" href="#" id="@Model[i].carid-no" onclick="whattodo(this.id)" class="btn btn-outline-danger" title="Reject Request for Enrollment"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td><i class="fa fa-stop"></i> No Action Needed </td>
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+    {
+    <script>
+        function whattodo(id) {
+            var yesno = id.split("-")[1];
+            var coachid = id.split("-")[0];
+            var url = "/club-activities/whattodowithcoach";
+            var data = new FormData();
+            data.append("yesno", yesno);
+            data.append("carid", coachid);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response.Msg);
+                    setTimeout(() => { location.reload(); }, 1000);
+                },
+                error: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html("unable to contact with server!");
+                }
+            })
+        }
+    </script>
+}
+
+
+

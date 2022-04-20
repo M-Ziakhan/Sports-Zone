@@ -1,0 +1,265 @@
+﻿@model List<clubs>
+@{
+    ViewBag.Title = "Clubs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<title>Our Clubs | Sports Zone</title>
+<style>
+    /* The container must be positioned relative: */
+    .custom-select {
+        position: relative;
+        font-family: Arial;
+    }
+
+        .custom-select select {
+            display: none; /*hide original SELECT element: */
+        }
+
+    .select-selected {
+        background-color: red;
+    }
+
+        /* Style the arrow inside the select element: */
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+        }
+
+        /* Point the arrow upwards when the select box is open (active): */
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #fff transparent;
+            top: 7px;
+        }
+
+    /* style the items (options), including the selected item: */
+    .select-items div, .select-selected {
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+    }
+
+    /* Style items (options): */
+    .select-items {
+        position: absolute;
+        background-color: indianred;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }
+
+    /* Hide the items when the select box is closed: */
+    .select-hide {
+        display: none;
+    }
+
+    .select-items div:hover, .same-as-selected {
+        background-color: red;
+    }
+</style>
+<div class="page-heading-breadcrumbs">
+    <div class="container">
+        <h2>Our Clubs | Sports Zone</h2>
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a></li>
+            <li>Clubs</li>
+        </ul>
+    </div>
+</div>
+<!-- Page Heading & Breadcrumbs  -->
+<!-- Page Heading banner -->
+<div style="height:400px; background-image:url(https://www.warwicksu.com/pageassets/societies-sports/sports-clubs/playingrugby123.jpg?thumbnail=true&height=450&width=1100&resize_type=CropToFit); background-position:center; background-size:contain" class="overlay-dark theme-padding parallax-window">
+</div>
+<main class="main-content" style="padding-top:20px; padding-bottom:20px">
+    <div class="team-detail-holder theme-padding white-bg" style="padding:20px 0px">
+        <div class="container">
+            <div class="row" style="border: red 2px solid; padding:10px">
+                <div style="width:40%!important; display:inline-block">
+                    <div class="custom-select" style="width:100%;">
+                        <select id="citysel">
+                            <option value="all">All</option>
+                            <option value="Mailsi">Mailsi</option>
+                            <option value="Vehari">Vehari</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="Lahore">Rawalpindi</option>
+                            <option value="Islamabad">Islamabad</option>
+                            <option value="Burewala">Burewala</option>
+                            <option value="Sahiwal">Sahiwal</option>
+                            <option value="Faisalabad">Faisalabad</option>
+                            <option value="Kohat">Kohat</option>
+                            <option value="Jhung">Jhung</option>
+                            <option value="Sialkot">Sialkot</option>
+                            <option value="Multan">Multan</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="width:40%!important; display:inline-block">
+                    <div class="custom-select" style="width:100%;">
+                        <select id="gamesel">
+                            <option value="0">Select Game</option>
+                            <option value="0">Select Game</option>
+                            @foreach (games g in (List<games>)ViewBag.Games)
+                            {
+                                <option value="@g.gameid">@g.gamename</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                @*<div style="width:40%; display:inline-block">
+            <input type="text" class="form-control" style="height:38px" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        </div>*@
+                <div style="width:15%; display:inline-block">
+                    <button onclick="search()" style="width:100%; height:38px" class="btn btn-danger" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- Team Detail -->
+    <div class="team-detail-holder white-bg">
+        <div class="container">
+            <div class="top-palyer">
+                <div class="row">
+                    @foreach (var clbs in Model)
+                    {
+                    <!-- Team Column -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 r-full-width">
+                        <div class="team-column">
+                            <img src="~/uploads/media/@clbs.logo" alt="" style="height:416px; width:269px">
+                            <span class="player-number" style="font-size:16px!important">C-@clbs.clubid</span>
+                            <div class="team-detail">
+                                <h5><a href="/clubs/@clbs.clubname.Split('♦')[1]">@clbs.clubname.Split('♦')[0]</a></h5>
+                                <span class="desination">@clbs.city</span>
+                                <div class="detail-inner">
+                                    <ul>
+                                        <li>City</li>
+                                        <li>Teams</li>
+                                        <li>Coachs</li>
+                                        <li>State</li>
+                                        <li>On Maps</li>
+                                    </ul>
+                                    <ul>
+                                        <li>@clbs.city</li>
+                                        <li>@clbs.clubname.Split('♦')[2]</li>
+                                        <li>@clbs.clubname.Split('♦')[3]</li>
+                                        <li>@clbs.C_state</li>
+                                        <li>
+                                            <ul>
+                                                <li><a class="pinterest" href="https://www.google.com/maps/place/COMSATS+University+Islamabad,+Vehari+Campus/30.0317593,72.3122742,17z/data=!4m12!1m6!3m5!1s0x393c95446603cf47:0xa4c7c9803430aee0!2sCOMSATS+University+Islamabad,+Vehari+Campus!8m2!3d30.0317593!4d72.3144629!3m4!1s0x393c95446603cf47:0xa4c7c9803430aee0!8m2!3d30.0317593!4d72.3144629"><i class="fa fa-location-arrow"></i></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Team Column -->
+                    }
+                </div>
+            </div>
+            <!-- Detail -->
+
+        </div>
+    </div>
+    <!-- Team Detail -->
+
+</main>
+<script>
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
+@section scripts{
+    <script>
+        function search() {
+            var city = $("#citysel option:selected").val();
+            var game = $("#gamesel option:selected").val();
+            window.location.href = "/clubs?city=" + city + "&game=" + game;
+        }
+    </script>
+
+    }
+
+

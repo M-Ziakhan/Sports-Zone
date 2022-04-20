@@ -1,0 +1,100 @@
+﻿@model List<SportsZone.Models.GamePositionsHolder>
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+    <head>
+        <title>
+            Create an Account | JZ Sports Zone
+        </title>
+        <script src="~/themes/default/js/vendor/jquery.js"></script>
+    </head>
+<style>
+    .custom-cls {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 25%;
+    }
+</style>
+
+<body style="background-image:url('https://motionarray.imgix.net/preview-279485-UenCPR1wxc-high_0008.jpg'); background-repeat:no-repeat; background-size:cover">
+    <link href="~/themes/default/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/themes/default/login/style.css" rel="stylesheet" />
+    <h2 style="color:white">Welcome to JZ Sports Zone</h2>
+    <a style="font-size:24px; color:white; margin-top:-10px" href="/">⬅️ Go to Home </a>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="/account/register" method="post" id="mainregform">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
+                </div>
+                <span>Use your email for registration</span>
+                <div class="row">
+                    <div class="custom-cls" style="display:inline-block">
+                        <input type="radio" id="player" name="Type" value="Player">
+                        <label for="player">Player</label>
+                    </div>
+                    <div class="custom-cls" style="display:inline-block">
+                        <input type="radio" id="coach" name="Type" value="Coach">
+                        <label for="coach">Coach</label>
+                    </div>
+                    <div class="custom-cls" style="display:inline-block">
+                        <input type="radio" id="club" name="Type" value="Club">
+                        <label for="club">Club</label>
+                    </div>
+                </div>
+                <select id="positionid" name="Roleid" style="display:none">
+                    @foreach (SportsZone.Models.GamePositionsHolder gp in Model)
+                    {
+                        <option value="@gp.pid"> @gp.gid | @gp.pid | @gp.gamename | @gp.positionname </option>
+                    }
+                </select>
+                <input type="email" placeholder="Email" name="Email" required />
+                <input type="text" placeholder="Username" name="Username" required />
+                <input type="password" placeholder="********" name="Password" required />
+                <input style="color:orangered; border:1px solid orangered" class="btn btn-outline-danger" type="submit" value="Sign Up" form="mainregform">
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button onclick="navigatetologin()" class="ghost" id="signIn">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <div style="text-align:center">
+            <p style="color:red">@ViewBag.Message</p>
+        </div>
+    }
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a href="#">JZ Sports Zone</a>
+        </p>
+    </footer>
+    <script>
+        function navigatetologin() {
+            window.location.href = '/account/login';
+        }
+        $(document).ready(function () {
+            $('input[type=radio][name=Type]').change(function () {
+                if (this.value == 'Player' || this.value == 'Coach') {
+                    $("#positionid").show();
+                }
+                else {
+                    $("#positionid").hide();
+                }
+            });
+        });
+    </script>
+</body>

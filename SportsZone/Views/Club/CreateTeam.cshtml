@@ -1,0 +1,152 @@
+﻿@model List<games>
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<titl> Create New Team | Player | JZ Sports Zone</titl>
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="page-title-box">
+
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Create Team</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Teams</a>
+                            </li>
+                            <li class="breadcrumb-item active">Create Team</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Create Team</h4>
+                        <p class="sub-title">Use the form below to create your team.</p>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                @ViewBag.Message
+                            </div>
+                        }
+                            <form action="/club-activities/createteam" method="post" id="cerfrm" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Team Name</label>
+                                    <div class="col-sm-6">
+                                        <input class="form-control" type="text" name="name" value="" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Select Game</label>
+                                    <div class="col-sm-4">
+                                        <select id="gameid" name="gameid" class="form-control">
+                                            @for (int i = 0; i < Model.Count; i++)
+                                            {
+                                                <option value="@Model[i].gameid">@Model[i].gamename</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Select Logo</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="file" name="photo1" value="" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Select Cover [HD]</label>
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="file" name="photo2" value="" required="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input-lg" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input type="submit" class="btn btn-outline-success" form="cerfrm" value="Create Team" />
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+        });
+        function checkteamselect() {
+            var tid = $("#teamid").val();
+            if (tid == -1) {
+                $("#submitdiv").hide();
+            }
+            else {
+                $("#submitdiv").show();
+            }
+        }
+        function getteams() {
+            var cid = $("#clubid").val();
+            var url = "/misc/getteams"
+            if (cid == -1) {
+                $("#teamdiv").hide();
+            }
+            else {
+                $("#teamdiv").show();
+                var data = new FormData();
+                data.append("clubid", cid);
+                $.ajax({
+                    url: url,
+                    type: "Post",
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    dataType: 'json',
+                    success: function (response) {
+                        var options = "";
+                        for (var i = 0; i < response.length; i++) {
+                            options += "<option value='" + response[i].teamid + "'>" + response[i].name + "</option>";
+                        }
+                        $('#teamid').append(options);
+                    },
+                    error: function (response) {
+                        $("#alert-msg").show();
+                        $("#errmsg").html(response)
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+

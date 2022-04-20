@@ -1,0 +1,167 @@
+﻿@model List<matches>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title>My Schedual Matchs | JZ Sports Zone</title>
+<div class="content">
+    <div class="container-fluid">
+        <div class="page-title-box">
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">My Schedual Matchs</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item active">Schedual Matchs</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">My Schedual Matchs</h4>
+                        <p class="sub-title">
+                            Your all matchs will display here which are schedauled or rejected!
+                        </p>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                @ViewBag.Message
+                            </div>
+                        }
+                        <div id="alert-msg" class="alert alert-info alert-dismissible fade show" role="alert" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <p id="errmsg"></p>
+                        </div>
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Match With</th>
+                                    <th>Game</th>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th>R Status</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model == null)
+                                {
+                                    <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < Model.Count; i++)
+                                    {
+                                    <tr>
+                                        <td>@Model[i].mid</td>
+                                        <td>@Model[i].clubs1.clubname</td>
+                                        <td>@Model[i].games.gamename</td>
+                                        <td>@Model[i].loc</td>
+                                        <td>@Model[i].C_date</td>
+                                        @if (Model[i].C_status == true)
+                                        {
+                                            <td><span class="badge badge-success">Open</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="badge badge-dark">Closed</span></td>
+                                        }
+                                        @if (Model[i].ov == "Accepted")
+                                        {
+                                            <td><span class="badge badge-success">Schedualed</span></td>
+                                        }
+                                        else if (Model[i].ov == "Rejected")
+                                        {
+                                            <td><span class="badge badge-danger">Rejected</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="badge badge-info">Proccessing</span></td>
+                                        }
+                                        @if (Model[i].C_status == true)
+                                        {
+                                            <td><a href="#" id="@Model[i].mid" onclick="withdrawschedual(this.id)" class="btn btn-outline-danger"><i class="fa fa-arrow-down"></i> Withdraw</a></td>
+                                        }
+                                        else
+                                        {
+                                            <td><i class="fa fa-stop"></i> No Action Needed</td>
+                                        }
+                                    </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!-- container-fluid -->
+
+</div>
+@section scripts
+    {
+    <script>
+        function withdrawschedual(id) {
+            var url = "/club-activities/whattodowithrequest";
+            var data = new FormData();
+            data.append("yesno", "no");
+            data.append("matchid", id);
+            $.ajax({
+                url: url,
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response.Msg)
+                    setTimeout(() => { location.reload() }, 1000);
+                },
+                error: function (response) {
+                    $("#alert-msg").show();
+                    $("#errmsg").html(response)
+                }
+            })
+        }
+    </script>
+}

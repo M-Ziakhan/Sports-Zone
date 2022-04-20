@@ -1,0 +1,95 @@
+﻿@model List<matches>
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+<title> Match Results | JZ Sports Zone</title>
+<div class="content">
+
+    <div class="container-fluid">
+        <div class="page-title-box">
+
+            <div class="row align-items-center ">
+                <div class="col-md-8">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Create Match Schedule Request</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Club Activities</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0);">Matchs</a>
+                            </li>
+                            <li class="breadcrumb-item active">Match Results</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="float-right d-none d-md-block app-datepicker">
+                        <input type="text" class="form-control" data-date-format="MM dd, yyyy" readonly="readonly" id="datepicker">
+                        <i class="mdi mdi-chevron-down mdi-drop"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end page-title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Add Match Results</h4>
+                        <p class="sub-title">Use the form below to add match results to result table</p>
+                        @if (ViewBag.Message != null)
+                        {
+                            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                @ViewBag.Message
+                            </div>
+                        }
+                        <form action="/club-activities/matchresult" method="post" id="cerfrm">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Select Match</label>
+                                <div class="col-sm-10">
+                                    <select id="matchid" name="matchid" class="form-control" required>
+                                        @for (int i = 0; i < Model.Count; i++)
+                                        {
+                                        <option value="@Model[i].mid">@Model[i].mid | @Model[i].games.gamename | You vs @Model[i].clubs1.clubname at @Model[i].loc </option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Select Satus - You</label>
+                                <div class="col-sm-10">
+                                    <select id="status" name="status" class="form-control" required>
+                                        <option value="draw">Draw</option> 
+                                        <option value="win">Won</option> 
+                                        <option value="lose">Lose</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input-lg" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input type="submit" class="btn btn-outline-success" form="cerfrm" value="Add to Result Table" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- container-fluid -->
+
+</div>
+
+
+
